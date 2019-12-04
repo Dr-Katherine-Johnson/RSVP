@@ -1,5 +1,8 @@
 const faker = require('faker');
 const _ = require('lodash');
+const db = require('./index.js');
+const Member = require('./models/Member.js');
+const Event = require('./models/Event.js');
 
 
 // Attendees
@@ -48,3 +51,26 @@ for (let i = 0; i < 100; i++) {
 
   events.push(newEvents);
 }
+
+const insertSampleMembersAndEvents = function () {
+  Member.deleteMany((err) => {
+    console.log('Removed Member')
+  })
+    .then(() =>
+      Event.deleteMany((err) => {
+        console.log('Removed Event')
+      })
+    )
+    .then(() =>
+      Member.create(members)
+    )
+    .then(() =>
+      Event.create(events)
+    )
+    .then(() => db.close())
+    .then(() =>
+      console.log('Database seeded!')
+    )
+};
+
+insertSampleMembersAndEvents();
