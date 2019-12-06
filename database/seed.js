@@ -52,18 +52,10 @@ for (let i = 0; i < 100; i++) {
   events.push(newEvents);
 }
 
-const insertSampleMembersAndEvents = function () {
-  Member.deleteMany((err) => {
-    console.log('Removed Member')
+const insertSampleEvents = function () {
+  Event.deleteMany((err) => {
+    console.log('Removed Event')
   })
-    .then(() =>
-      Event.deleteMany((err) => {
-        console.log('Removed Event')
-      })
-    )
-    .then(() =>
-      Member.create(members)
-    )
     .then(() =>
       Event.create(events)
     )
@@ -73,4 +65,4 @@ const insertSampleMembersAndEvents = function () {
     )
 };
 
-insertSampleMembersAndEvents();
+insertSampleEvents();
