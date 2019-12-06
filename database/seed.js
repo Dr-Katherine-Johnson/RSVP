@@ -29,16 +29,16 @@ for (let i = 0; i < 500; i++) {
 
 // Events
 let events = [];
+const randomNum = faker.random.number({ min: 1, max: 100 });
 
 for (let i = 0; i < 100; i++) {
   const eventId = i;
   const limit = faker.random.boolean();
   const setLimit = limit ? faker.random.number({ min: 20, max: 100 }) : null;
-  const randomNum = faker.random.number({ min: 1, max: 100 });
-  const attendees = _.sampleSize(members, randomNum);
+  const attendees = limit ? _.sampleSize(members, setLimit) : _.sampleSize(members, randomNum);
   const numEventOrg = faker.random.number({ min: 1, max: 2 });
   const eventOrganizer = numEventOrg > 1 ? [attendees[0], attendees[1]] : [attendees[0]];
-  const waitlist = attendees.length > limit ? _.sampleSize(members, randomNum) : null;
+  const waitlist = setLimit === null ? null : _.sampleSize(members, randomNum);
 
   let newEvents = {
     eventId,
