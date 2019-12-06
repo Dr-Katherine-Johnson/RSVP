@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 const mongoUri = 'mongodb://localhost/attendees';
 
-mongoose.connect(mongoUri, { useNewUrlParser: true });
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 var db = mongoose.connection;
 

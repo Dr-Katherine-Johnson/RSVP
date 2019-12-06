@@ -66,3 +66,5 @@ const insertSampleEvents = function () {
 };
 
 insertSampleEvents();
+
+module.exports.events;
