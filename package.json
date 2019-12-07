@@ -1,20 +1,27 @@
 {
-  "name": "meetup-ms-attendees",
+  "name": "meetup-ms-rsvp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node database/seed.js"
+    "seed": "node database/seed.js",
+    "start": "nodemon node server/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drliskov/attendees.git"
+    "url": "git+https://github.com/drliskov/rsvp.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/drliskov/attendees/issues"
+    "url": "https://github.com/drliskov/rsvp/issues"
   },
-  "homepage": "https://github.com/drliskov/attendees#readme"
+  "homepage": "https://github.com/drliskov/rsvp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.7.13"
+  }
 }
