@@ -1,11 +1,9 @@
 const faker = require('faker');
 const _ = require('lodash');
 const db = require('./index.js');
-const Member = require('./models/Member.js');
 const Event = require('./models/Event.js');
 
 
-// Attendees
 let members = [];
 
 for (let i = 0; i < 500; i++) {
@@ -27,7 +25,6 @@ for (let i = 0; i < 500; i++) {
 }
 
 
-// Events
 let events = [];
 const randomNum = faker.random.number({ min: 1, max: 100 });
 
