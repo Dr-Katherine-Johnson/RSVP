@@ -8,8 +8,8 @@ router.route('/').get((req, res) => {
 })
 
 router.route('/:eventId').get((req, res) => {
-  Event.findOne({ eventId: req.params.eventId })
-    .then((event) => res.json(event))
+  Event.findOne({ eventId: req.params.eventId }, 'attendees waitlist')
+    .then((attendeesCount) => res.json(attendeesCount))
     .catch(err => res.status(400).json(`Error: ${err}`));
 })
 module.exports = router;
