@@ -1,7 +1,6 @@
 const faker = require('faker');
 const _ = require('lodash');
 const db = require('./index.js');
-const Member = require('./models/Member.js');
 const Event = require('./models/Event.js');
 
 
