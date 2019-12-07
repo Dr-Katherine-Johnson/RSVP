@@ -29,5 +29,38 @@ router.route('/hosts/:eventId').get((req, res) => {
     .catch(err => res.status(400).json(`Error: ${err}`));
 })
 
+router.route('/profiles/:eventId').get((req, res) => {
+  Event.findOne({ eventId: req.params.eventId })
+    .then((event) => {
+      var attendees = []
+      event.attendees.forEach(user => {
+        const person = {
+          memberId: user.memberId,
+          name: user.name,
+          thumbnail: user.thumbnail
+        }
+        attendees.push(person)
+      })
+      res.json({ attendees })
+    })
+    .catch(err => res.status(400).json(`Error: ${err}`));
+})
+
+router.route('/attendees/:eventId').get((req, res) => {
+  Event.findOne({ eventId: req.params.eventId })
+    .then((event) => {
+      var attendees = []
+      event.attendees.forEach(user => {
+        const person = {
+          name: user.name,
+          avatar: user.avatar
+        }
+        attendees.push(person)
+      })
+      res.json({ attendees })
+    })
+    .catch(err => res.status(400).json(`Error: ${err}`));
+})
+
 
 module.exports = router;
