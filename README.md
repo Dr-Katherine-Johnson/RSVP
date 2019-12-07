@@ -1,4 +1,4 @@
-# attendees
+# rsvp
 
 > Project description
 
