@@ -16,15 +16,15 @@ router.route('/:eventId').get((req, res) => {
 router.route('/hosts/:eventId').get((req, res) => {
   Event.findOne({ eventId: req.params.eventId })
     .then((event) => {
-      var hosts = []
+      var eventHosts = []
       event.eventOrganizer.forEach(user => {
         const person = {
           name: user.name,
           thumbnail: user.thumbnail
         }
-        hosts.push(person)
+        eventHosts.push(person)
       })
-      res.json({ hosts })
+      res.json({ eventHosts })
     })
     .catch(err => res.status(400).json(`Error: ${err}`));
 })
