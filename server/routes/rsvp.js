@@ -12,4 +12,22 @@ router.route('/:eventId').get((req, res) => {
     .then((attendeesCount) => res.json(attendeesCount))
     .catch(err => res.status(400).json(`Error: ${err}`));
 })
+
+router.route('/hosts/:eventId').get((req, res) => {
+  Event.findOne({ eventId: req.params.eventId })
+    .then((event) => {
+      var hosts = []
+      event.eventOrganizer.forEach(user => {
+        const person = {
+          name: user.name,
+          thumbnail: user.thumbnail
+        }
+        hosts.push(person)
+      })
+      res.json({ hosts })
+    })
+    .catch(err => res.status(400).json(`Error: ${err}`));
+})
+
+
 module.exports = router;
