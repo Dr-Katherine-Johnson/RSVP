@@ -7,4 +7,9 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json(`Error: ${err}`));
 })
 
+router.route('/:eventId').get((req, res) => {
+  Event.findOne({ eventId: req.params.eventId })
+    .then((event) => res.json(event))
+    .catch(err => res.status(400).json(`Error: ${err}`));
+})
 module.exports = router;
