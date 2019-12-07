@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-const mongoUri = 'mongodb://localhost/rsvp';
+const mongoUri = 'mongodb://localhost/attendees';
 
 mongoose.connect(mongoUri, { useNewUrlParser: true });
 
