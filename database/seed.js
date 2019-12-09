@@ -64,4 +64,4 @@ const insertSampleEvents = function () {
 
 insertSampleEvents();
 
-module.exports.events;
+module.exports = events;

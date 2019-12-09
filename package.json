@@ -18,6 +18,9 @@
     "url": "https://github.com/drliskov/rsvp/issues"
   },
   "homepage": "https://github.com/drliskov/rsvp#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "faker": "^4.1.0",
