@@ -4,7 +4,7 @@ let Event = require('../../database/models/Event.js');
 router.route('/:eventId').get((req, res) => {
   Event.findOne({ eventId: req.params.eventId }, 'attendees waitlist')
     .then((attendeesCount) => res.json(attendeesCount))
-    .catch(err => res.status(400).json(`Error: ${err}`));
+    .catch(err => res.status(404).json(`Error: ${err}`));
 })
 
 router.route('/hosts/:eventId').get((req, res) => {
@@ -20,7 +20,7 @@ router.route('/hosts/:eventId').get((req, res) => {
       })
       res.json(eventHosts)
     })
-    .catch(err => res.status(400).json(`Error: ${err}`));
+    .catch(err => res.status(404).json(`Error: ${err}`));
 })
 
 router.route('/attendees/:eventId').get((req, res) => {
@@ -36,7 +36,7 @@ router.route('/attendees/:eventId').get((req, res) => {
       })
       res.json(attendees)
     })
-    .catch(err => res.status(400).json(`Error: ${err}`));
+    .catch(err => res.status(404).json(`Error: ${err}`));
 })
 
 
