@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/rsvpStyle.scss';
 
 class RSVP extends React.Component {
 
