@@ -1,29 +1,39 @@
 import React from 'react';
-import '../styles/rsvpStyle.scss';
+import moment from 'moment';
+import {
+  Grid,
+  Box,
+  Typography,
+} from '@material-ui/core';
 
 class RSVP extends React.Component {
 
   render() {
+    const event = this.props.event;
+    const date = moment(event.local_date_time).utc().format('dddd, MMM DD');
+    const time = moment(event.local_date_time).utc().format('h:mm A');
+    const eventTitle = this.props.event.title
+
     return (
-      <div className="rsvp-container">
-        <div className="event-info-container">
-          <div className="date-time">
-            <span>Date</span> <span>Time</span>
-          </div>
-          <div className="event-title">
-            <span>Event Title</span>
-          </div>
-        </div>
-        <div className="text-btn-container">
-          <div>
-            <span>Free</span>
-          </div>
-          <div className="btn-container">
+      <Grid className="rsvp-container">
+        <Grid className="event-info-container">
+          <Box className="date-time">
+            <Typography>{date}</Typography><Typography>{time}</Typography>
+          </Box>
+          <Box className="event-title">
+            <Typography>{eventTitle}</Typography>
+          </Box>
+        </Grid>
+        <Grid className="text-btn-container">
+          <Box>
+            <Typography>Free</Typography>
+          </Box>
+          <Box className="btn-container">
             <button type="button">Star</button>
             <button type="button">Attend</button>
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Grid>
+      </Grid>
     )
   }
 }
