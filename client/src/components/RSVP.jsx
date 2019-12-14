@@ -5,22 +5,23 @@ import {
   Box,
   Typography,
 } from '@material-ui/core';
+import { Container } from '../styles/StyledComponents.jsx';
 
 class RSVP extends React.Component {
 
   render() {
     const event = this.props.event;
-    const date = moment(event.local_date_time).utc().format('dddd, MMM DD');
+    const date = moment(event.local_date_time).utc().format('ddd, MMM DD');
     const time = moment(event.local_date_time).utc().format('h:mm A');
     const eventTitle = this.props.event.title
 
     return (
-      <Grid className="rsvp-container">
+      <Container>
         <Grid className="event-info-container">
-          <Box className="date-time">
-            <Typography>{date}</Typography><Typography>{time}</Typography>
+          <Box>
+            <Typography>{date} · {time}</Typography>
           </Box>
-          <Box className="event-title">
+          <Box>
             <Typography>{eventTitle}</Typography>
           </Box>
         </Grid>
@@ -33,7 +34,7 @@ class RSVP extends React.Component {
             <button type="button">Attend</button>
           </Box>
         </Grid>
-      </Grid>
+      </Container>
     )
   }
 }
