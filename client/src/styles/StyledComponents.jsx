@@ -1,7 +1,8 @@
 import {
   withStyles,
   Grid,
-  Checkbox
+  Checkbox,
+  Button
 } from '@material-ui/core';
 
 export const Container = withStyles(() => ({
@@ -44,4 +45,22 @@ export const FavoriteButton = withStyles(() => ({
   }
 
 }))(Checkbox);
+
+export const AttendButton = withStyles(() => ({
+  root: {
+    backgroundColor: '#f55858',
+    borderRadius: '7px',
+    width: 114,
+    height: 54,
+    color: '#fff',
+    textTransform: 'none',
+    '&:hover': {
+      backgroundColor: '#f55758',
+      opacity: '0.9',
+      transition: '0.3s'
+    },
+    fontWeight: '500'
+  },
+
+}))(Button);
 

@@ -12,7 +12,8 @@ import {
   Container,
   EventInfoContainer,
   TextButtonContainer,
-  FavoriteButton
+  FavoriteButton,
+  AttendButton
 } from '../styles/StyledComponents.jsx';
 
 class RSVP extends React.Component {
@@ -40,7 +41,7 @@ class RSVP extends React.Component {
           <Box>
             <FavoriteButton
               icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
-            <button type="button">Attend</button>
+            <AttendButton>Attend</AttendButton>
           </Box>
         </TextButtonContainer>
       </Container>
