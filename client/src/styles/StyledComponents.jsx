@@ -41,7 +41,8 @@ export const FavoriteButton = withStyles(() => ({
     border: '#c5c4c4 solid 1px',
     borderRadius: '7px',
     width: 34,
-    height: 34
+    height: 34,
+    marginLeft: 60
   }
 
 }))(Checkbox);
@@ -59,7 +60,8 @@ export const AttendButton = withStyles(() => ({
       opacity: '0.9',
       transition: '0.3s'
     },
-    fontWeight: '500'
+    fontWeight: '500',
+    marginLeft: 20
   },
 
 }))(Button);
