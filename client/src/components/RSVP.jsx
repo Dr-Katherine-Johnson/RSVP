@@ -10,10 +10,11 @@ import {
   EventInfoContainer,
   TextButtonContainer,
   FavoriteButton,
-  AttendButton,
   TimeDate,
   BoldText
 } from '../styles/StyledComponents.jsx';
+
+import AttendDialog from './AttendDialog.jsx'
 
 class RSVP extends React.Component {
 
@@ -40,7 +41,7 @@ class RSVP extends React.Component {
           <Box>
             <FavoriteButton
               icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
-            <AttendButton>Attend</AttendButton>
+            <AttendDialog />
           </Box>
         </TextButtonContainer>
       </Container>
