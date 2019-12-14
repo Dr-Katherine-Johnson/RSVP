@@ -1,11 +1,14 @@
 import React from 'react';
 import moment from 'moment';
 import {
-  Grid,
   Box,
   Typography,
 } from '@material-ui/core';
-import { Container } from '../styles/StyledComponents.jsx';
+import {
+  Container,
+  EventInfo,
+  TextButton
+} from '../styles/StyledComponents.jsx';
 
 class RSVP extends React.Component {
 
@@ -17,15 +20,15 @@ class RSVP extends React.Component {
 
     return (
       <Container>
-        <Grid className="event-info-container">
+        <EventInfo>
           <Box>
             <Typography>{date} · {time}</Typography>
           </Box>
           <Box>
             <Typography>{eventTitle}</Typography>
           </Box>
-        </Grid>
-        <Grid className="text-btn-container">
+        </EventInfo>
+        <TextButton>
           <Box>
             <Typography>Free</Typography>
           </Box>
@@ -33,7 +36,7 @@ class RSVP extends React.Component {
             <button type="button">Star</button>
             <button type="button">Attend</button>
           </Box>
-        </Grid>
+        </TextButton>
       </Container>
     )
   }

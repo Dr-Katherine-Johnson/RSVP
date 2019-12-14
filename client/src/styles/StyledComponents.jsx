@@ -15,4 +15,21 @@ export const Container = withStyles(() => ({
     padding: '0 20%'
   }
 
-}))(Grid)
+}))(Grid);
+
+export const EventInfo = withStyles(() => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+  }
+
+}))(Grid);
+
+export const TextButton = withStyles(() => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'row',
+  }
+
+}))(Grid);
+
