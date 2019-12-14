@@ -35,14 +35,10 @@ class RSVP extends React.Component {
           </Box>
         </EventInfoContainer>
         <TextButtonContainer>
-          <Box>
-            <BoldText>FREE</BoldText>
-          </Box>
-          <Box>
-            <FavoriteButton
-              icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
-            <AttendDialog />
-          </Box>
+          <BoldText>FREE</BoldText>
+          <FavoriteButton
+            icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
+          <AttendDialog />
         </TextButtonContainer>
       </Container>
     )
