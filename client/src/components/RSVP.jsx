@@ -36,7 +36,7 @@ class RSVP extends React.Component {
         </EventInfoContainer>
         <TextButtonContainer>
           <Box>
-            <Typography>Free</Typography>
+            <Typography>FREE</Typography>
           </Box>
           <Box>
             <FavoriteButton
