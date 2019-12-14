@@ -66,7 +66,7 @@ export const AttendButton = withStyles(() => ({
       opacity: '0.9',
       transition: '0.3s'
     },
-    fontWeight: 500,
+    fontWeight: 600,
     marginLeft: 20,
     fontFamily: Roboto,
     fontSize: 16,
@@ -78,7 +78,7 @@ export const TimeDate = withStyles(() => ({
   root: {
     fontFamily: Roboto,
     fontSize: 16,
-    fontWeight: 100
+    fontWeight: 300
   }
 
 }))(Typography);
@@ -87,7 +87,7 @@ export const BoldText = withStyles(() => ({
   root: {
     fontFamily: Roboto,
     fontSize: 16,
-    fontWeight: 500
+    fontWeight: 600
   }
 
 }))(Typography);
