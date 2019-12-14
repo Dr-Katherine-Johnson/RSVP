@@ -2,8 +2,11 @@ import {
   withStyles,
   Grid,
   Checkbox,
-  Button
+  Button,
+  Typography
 } from '@material-ui/core';
+
+const Roboto = 'Roboto, sans-serif'
 
 export const Container = withStyles(() => ({
   root: {
@@ -60,9 +63,29 @@ export const AttendButton = withStyles(() => ({
       opacity: '0.9',
       transition: '0.3s'
     },
-    fontWeight: '500',
-    marginLeft: 20
+    fontWeight: 500,
+    marginLeft: 20,
+    fontFamily: Roboto,
+    fontSize: 16,
   },
 
 }))(Button);
+
+export const TimeDate = withStyles(() => ({
+  root: {
+    fontFamily: Roboto,
+    fontSize: 16,
+    fontWeight: 100
+  }
+
+}))(Typography);
+
+export const BoldText = withStyles(() => ({
+  root: {
+    fontFamily: Roboto,
+    fontSize: 16,
+    fontWeight: 500
+  }
+
+}))(Typography);
 

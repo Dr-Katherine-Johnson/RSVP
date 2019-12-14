@@ -13,7 +13,9 @@ import {
   EventInfoContainer,
   TextButtonContainer,
   FavoriteButton,
-  AttendButton
+  AttendButton,
+  TimeDate,
+  BoldText
 } from '../styles/StyledComponents.jsx';
 
 class RSVP extends React.Component {
@@ -28,15 +30,15 @@ class RSVP extends React.Component {
       <Container>
         <EventInfoContainer>
           <Box>
-            <Typography>{date} · {time}</Typography>
+            <TimeDate>{date} · {time}</TimeDate>
           </Box>
           <Box>
-            <Typography>{eventTitle}</Typography>
+            <BoldText>{eventTitle}</BoldText>
           </Box>
         </EventInfoContainer>
         <TextButtonContainer>
           <Box>
-            <Typography>FREE</Typography>
+            <BoldText>FREE</BoldText>
           </Box>
           <Box>
             <FavoriteButton
