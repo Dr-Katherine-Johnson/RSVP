@@ -1,13 +1,18 @@
 import React from 'react';
 import moment from 'moment';
+
 import {
   Box,
-  Typography,
+  Typography
 } from '@material-ui/core';
+import StarIcon from '@material-ui/icons/Star';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+
 import {
   Container,
-  EventInfo,
-  TextButton
+  EventInfoContainer,
+  TextButtonContainer,
+  FavoriteButton
 } from '../styles/StyledComponents.jsx';
 
 class RSVP extends React.Component {
@@ -20,23 +25,24 @@ class RSVP extends React.Component {
 
     return (
       <Container>
-        <EventInfo>
+        <EventInfoContainer>
           <Box>
             <Typography>{date} · {time}</Typography>
           </Box>
           <Box>
             <Typography>{eventTitle}</Typography>
           </Box>
-        </EventInfo>
-        <TextButton>
+        </EventInfoContainer>
+        <TextButtonContainer>
           <Box>
             <Typography>Free</Typography>
           </Box>
-          <Box className="btn-container">
-            <button type="button">Star</button>
+          <Box>
+            <FavoriteButton
+              icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
             <button type="button">Attend</button>
           </Box>
-        </TextButton>
+        </TextButtonContainer>
       </Container>
     )
   }

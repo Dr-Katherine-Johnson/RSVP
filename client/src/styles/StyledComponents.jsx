@@ -1,13 +1,14 @@
 import {
   withStyles,
-  Grid
+  Grid,
+  Checkbox
 } from '@material-ui/core';
 
 export const Container = withStyles(() => ({
   root: {
     border: '#e6e6e6 solid 1px',
     maxWidth: '100%',
-    height: 90,
+    height: 100,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -17,7 +18,7 @@ export const Container = withStyles(() => ({
 
 }))(Grid);
 
-export const EventInfo = withStyles(() => ({
+export const EventInfoContainer = withStyles(() => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -25,11 +26,22 @@ export const EventInfo = withStyles(() => ({
 
 }))(Grid);
 
-export const TextButton = withStyles(() => ({
+export const TextButtonContainer = withStyles(() => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center'
   }
 
 }))(Grid);
+
+export const FavoriteButton = withStyles(() => ({
+  root: {
+    border: '#c5c4c4 solid 1px',
+    borderRadius: '7px',
+    width: 34,
+    height: 34
+  }
+
+}))(Checkbox);
 
