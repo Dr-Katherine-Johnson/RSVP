@@ -45,7 +45,10 @@ export const FavoriteButton = withStyles(() => ({
     borderRadius: '7px',
     width: 34,
     height: 34,
-    marginLeft: 60
+    marginLeft: 60,
+    '&:hover': {
+      backgroundColor: 'transparent',
+    }
   }
 
 }))(Checkbox);
