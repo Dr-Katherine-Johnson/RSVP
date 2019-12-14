@@ -1,10 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import {
-  Box,
-  Typography
-} from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 
