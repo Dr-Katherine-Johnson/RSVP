@@ -1,14 +1,22 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import Typography from '@material-ui/core/Typography';
+import { makeStyles, Typography } from '@material-ui/core';
 import {
   AttendButton,
   DialogClose,
   DialogContent
 } from '../styles/StyledComponents.jsx';
 
+const styles = makeStyles({
+  dialog: {
+    width: 440,
+    height: 555,
+  },
+});
+
 
 export default function AttendDialog({ date, time, title, hosts }) {
+  const classes = styles()
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -23,7 +31,9 @@ export default function AttendDialog({ date, time, title, hosts }) {
       <AttendButton onClick={handleClickOpen}>
         Attend
       </AttendButton>
-      <Dialog onClose={handleClose} open={open}>
+      <Dialog onClose={handleClose} open={open} classes={{
+        paper: classes.dialog,
+      }}>
         <DialogClose onClose={handleClose} />
         <DialogContent >
           <Typography gutterBottom>
