@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 
-import { Box } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 
@@ -26,22 +25,14 @@ class RSVP extends React.Component {
     return (
       <Container>
         <EventInfoContainer>
-          <Box>
-            <TimeDate>{date} · {time}</TimeDate>
-          </Box>
-          <Box>
-            <BoldText>{eventTitle}</BoldText>
-          </Box>
+          <TimeDate>{date} · {time}</TimeDate>
+          <BoldText>{eventTitle}</BoldText>
         </EventInfoContainer>
         <TextButtonContainer>
-          <Box>
-            <BoldText>FREE</BoldText>
-          </Box>
-          <Box>
-            <FavoriteButton
-              icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
-            <AttendButton>Attend</AttendButton>
-          </Box>
+          <BoldText>FREE</BoldText>
+          <FavoriteButton
+            icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
+          <AttendButton>Attend</AttendButton>
         </TextButtonContainer>
       </Container>
     )
