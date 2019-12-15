@@ -129,3 +129,12 @@ export const DialogContent = withStyles(theme => ({
     padding: theme.spacing(2),
   },
 }))(MuiDialogContent);
+
+export const AvatarContainer = withStyles(() => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: 20
+  }
+
+}))(Grid);

@@ -1,6 +1,7 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { makeStyles, Avatar } from '@material-ui/core';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import {
   AttendButton,
   DialogClose,
@@ -20,6 +21,7 @@ const styles = makeStyles(theme => ({
 
 
 export default function AttendDialog({ date, time, title, hosts }) {
+  console.log(hosts)
   const classes = styles()
   const [open, setOpen] = React.useState(false);
 
@@ -40,9 +42,17 @@ export default function AttendDialog({ date, time, title, hosts }) {
       }}>
         <DialogClose onClose={handleClose} />
         <DialogContent >
-          {hosts.map(host => {
-            return <Avatar alt={host.name} src={host.thumbnail} className={classes.large} />
-          })}
+          {hosts.length > 1 ? (
+            <AvatarGroup>
+              <Avatar src={hosts[0].thumbnail} className={classes.large} />
+              <Avatar src={hosts[1].thumbnail} className={classes.large} />
+            </AvatarGroup>
+          ) : (
+              hosts.map(host => {
+                return <Avatar src={host.thumbnail} className={classes.large} />
+              })
+            )
+          }
         </DialogContent>
       </Dialog>
     </div >
