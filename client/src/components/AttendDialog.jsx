@@ -1,18 +1,22 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import { makeStyles, Typography } from '@material-ui/core';
+import { makeStyles, Avatar } from '@material-ui/core';
 import {
   AttendButton,
   DialogClose,
   DialogContent
 } from '../styles/StyledComponents.jsx';
 
-const styles = makeStyles({
+const styles = makeStyles(theme => ({
   dialog: {
     width: 440,
     height: 555,
   },
-});
+  large: {
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+  },
+}));
 
 
 export default function AttendDialog({ date, time, title, hosts }) {
@@ -36,12 +40,11 @@ export default function AttendDialog({ date, time, title, hosts }) {
       }}>
         <DialogClose onClose={handleClose} />
         <DialogContent >
-          <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          </Typography>
+          {hosts.map(host => {
+            return <Avatar alt={host.name} src={host.thumbnail} className={classes.large} />
+          })}
         </DialogContent>
       </Dialog>
-    </div>
+    </div >
   );
 }
