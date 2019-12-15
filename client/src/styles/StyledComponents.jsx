@@ -156,3 +156,21 @@ export const DialogHeader = withStyles(() => ({
   }
 
 }))(Typography);
+
+export const SubheaderContainer = withStyles(() => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
+    padding: '20px 20px'
+  }
+
+}))(Grid);
+
+export const DialogSubheader = withStyles(() => ({
+  root: {
+    fontFamily: Roboto,
+    fontSize: 14
+  }
+
+}))(Typography);
