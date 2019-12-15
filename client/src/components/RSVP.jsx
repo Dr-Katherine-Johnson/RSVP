@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import axios from 'axios';
 
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -16,6 +17,24 @@ import {
 import AttendDialog from './AttendDialog.jsx'
 
 class RSVP extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      eventHosts: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/rsvp/hosts/0')
+      .then((eventHosts) => {
+        this.setState({
+          eventHosts: eventHosts.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   render() {
     const event = this.props.event;
