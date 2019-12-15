@@ -134,7 +134,25 @@ export const AvatarContainer = withStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: 20
+    margin: '20px 0px'
   }
 
 }))(Grid);
+
+export const HeaderContainer = withStyles(() => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
+    padding: '0px 50px'
+  }
+
+}))(Grid);
+
+export const DialogHeader = withStyles(() => ({
+  root: {
+    fontFamily: Roboto,
+    fontSize: 28
+  }
+
+}))(Typography);
