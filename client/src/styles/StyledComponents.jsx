@@ -174,3 +174,31 @@ export const DialogSubheader = withStyles(() => ({
   }
 
 }))(Typography);
+
+export const CalendarButton = withStyles(() => ({
+  root: {
+    border: '#0098ab solid 1px',
+    backgroundColor: 'transparent',
+    borderRadius: '7px',
+    width: 149,
+    height: 42,
+    color: '#0098ab',
+    textTransform: 'none',
+    '&:hover': {
+      backgroundColor: '#0098ab',
+      color: '#fff'
+    },
+    fontWeight: 600,
+    fontFamily: Roboto,
+    fontSize: 14,
+  },
+
+}))(Button);
+
+export const CalendarBtnContainer = withStyles(() => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+  }
+
+}))(Grid);

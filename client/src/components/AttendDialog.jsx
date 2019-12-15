@@ -1,6 +1,6 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import { makeStyles, Avatar, Typography } from '@material-ui/core';
+import { makeStyles, Avatar } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import {
   AttendButton,
@@ -12,6 +12,8 @@ import {
   SubheaderContainer,
   DialogSubheader
 } from '../styles/StyledComponents.jsx';
+
+import DialogCalendarBtn from './DialogCalendarBtn.jsx'
 
 const styles = makeStyles(theme => ({
   dialog: {
@@ -26,7 +28,6 @@ const styles = makeStyles(theme => ({
 
 
 export default function AttendDialog({ date, time, title, hosts }) {
-  console.log(hosts)
   const classes = styles()
   const [open, setOpen] = React.useState(false);
 
@@ -74,6 +75,7 @@ export default function AttendDialog({ date, time, title, hosts }) {
           <SubheaderContainer>
             <DialogSubheader>Fanny pack la croix mixtape, gastropub cardigan iceland polaroid hammock typewriter</DialogSubheader>
           </SubheaderContainer>
+          <DialogCalendarBtn />
         </DialogContent>
       </Dialog>
     </div >
