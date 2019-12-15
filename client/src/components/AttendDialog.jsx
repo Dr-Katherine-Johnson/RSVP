@@ -8,7 +8,7 @@ import {
 } from '../styles/StyledComponents.jsx';
 
 
-export default function AttendDialog() {
+export default function AttendDialog({ date, time, title, hosts }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
