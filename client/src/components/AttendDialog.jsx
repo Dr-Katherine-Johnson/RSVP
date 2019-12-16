@@ -13,8 +13,9 @@ import {
   DialogSubheader
 } from '../styles/StyledComponents.jsx';
 
-import DialogCalendarBtn from './DialogCalendarBtn.jsx'
-import DialogEventInfo from './DialogEventInfo.jsx'
+import DialogCalendarBtn from './DialogCalendarBtn.jsx';
+import DialogEventInfo from './DialogEventInfo.jsx';
+import ShareDialog from './ShareDialog.jsx';
 
 const styles = makeStyles(theme => ({
   dialog: {
@@ -27,8 +28,7 @@ const styles = makeStyles(theme => ({
   },
 }));
 
-
-export default function AttendDialog({ event, time, title, hosts }) {
+export default function AttendDialog({ event, time, title, hosts, handleClickAttend, showAttendBtn }) {
   const classes = styles()
   const [open, setOpen] = React.useState(false);
 
@@ -41,12 +41,12 @@ export default function AttendDialog({ event, time, title, hosts }) {
 
   return (
     <div>
-      <AttendButton onClick={handleClickOpen}>
-        Attend
-      </AttendButton>
-      <Dialog onClose={handleClose} open={open} classes={{
-        paper: classes.dialog,
-      }}>
+      {!showAttendBtn ?
+        <ShareDialog />
+        : <AttendButton onClick={() => { handleClickOpen(); handleClickAttend() }}>
+          Attend
+      </AttendButton>}
+      <Dialog onClose={handleClose} open={open} classes={{ paper: classes.dialog }}>
         <DialogClose onClose={handleClose} />
         <DialogContent >
           <AvatarContainer>
@@ -80,6 +80,6 @@ export default function AttendDialog({ event, time, title, hosts }) {
           <DialogEventInfo event={event} title={title} time={time} />
         </DialogContent>
       </Dialog>
-    </div>
+    </div >
   );
 }

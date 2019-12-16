@@ -217,3 +217,33 @@ export const EventCard = withStyles(() => ({
   }
 
 }))(Card);
+
+export const ShareButton = withStyles(() => ({
+  root: {
+    border: '#757575 solid 1px',
+    backgroundColor: '#e6e6e6',
+    borderRadius: '7px',
+    width: 129.56,
+    height: 54,
+    color: '#757575',
+    textTransform: 'none',
+    '&:hover': {
+      backgroundColor: '#c5c4c4',
+    },
+    fontWeight: 600,
+    marginLeft: 20,
+    fontFamily: Roboto,
+    fontSize: 16,
+  },
+
+}))(Button);
+
+export const ShareDialogText = withStyles(() => ({
+  root: {
+    fontFamily: Roboto,
+    fontSize: 18,
+    color: '#00a2c7',
+    cursor: 'pointer'
+  }
+
+}))(Typography);
