@@ -149,7 +149,8 @@ export const HeaderContainer = withStyles(() => ({
 export const DialogHeader = withStyles(() => ({
   root: {
     fontFamily: Roboto,
-    fontSize: 28
+    fontSize: 28,
+    fontWeight: 600
   }
 
 }))(Typography);
