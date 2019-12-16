@@ -20,8 +20,10 @@ class RSVP extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      eventHosts: []
+      eventHosts: [],
+      showAttendBtn: true
     }
+    this.handleClickAttend = this.handleClickAttend.bind(this)
   }
 
   componentDidMount() {
@@ -34,6 +36,12 @@ class RSVP extends React.Component {
       .catch((err) => {
         console.log(err)
       })
+  }
+
+  handleClickAttend() {
+    this.setState({
+      showAttendBtn: false
+    })
   }
 
   render() {
@@ -53,7 +61,7 @@ class RSVP extends React.Component {
           <BoldText>FREE</BoldText>
           <FavoriteButton
             icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
-          <AttendDialog event={event} time={time} title={eventTitle} hosts={eventHosts} />
+          <AttendDialog event={event} time={time} title={eventTitle} hosts={eventHosts} handleClickAttend={this.handleClickAttend} showAttendBtn={this.state.showAttendBtn} />
         </TextButtonContainer>
       </Container>
     )
