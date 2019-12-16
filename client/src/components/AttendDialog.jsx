@@ -28,7 +28,7 @@ const styles = makeStyles(theme => ({
 }));
 
 
-export default function AttendDialog({ date, time, title, hosts }) {
+export default function AttendDialog({ event, time, title, hosts }) {
   const classes = styles()
   const [open, setOpen] = React.useState(false);
 
@@ -77,7 +77,7 @@ export default function AttendDialog({ date, time, title, hosts }) {
             <DialogSubheader>Fanny pack la croix mixtape, gastropub cardigan iceland polaroid hammock typewriter</DialogSubheader>
           </SubheaderContainer>
           <DialogCalendarBtn />
-          <DialogEventInfo />
+          <DialogEventInfo event={event} title={title} time={time} />
         </DialogContent>
       </Dialog>
     </div>
