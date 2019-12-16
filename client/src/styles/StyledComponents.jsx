@@ -4,7 +4,8 @@ import {
   Grid,
   Checkbox,
   Button,
-  Typography
+  Typography,
+  Card
 } from '@material-ui/core';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -14,10 +15,6 @@ import CloseIcon from '@material-ui/icons/Close';
 const Roboto = 'Roboto, sans-serif'
 
 const styles = theme => ({
-  root: {
-    margin: 0,
-    padding: theme.spacing(2),
-  },
   closeButton: {
     position: 'absolute',
     left: theme.spacing(1),
@@ -134,7 +131,7 @@ export const AvatarContainer = withStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
-    margin: '20px 0px'
+    marginBottom: 10
   }
 
 }))(Grid);
@@ -199,6 +196,23 @@ export const CalendarBtnContainer = withStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
+    marginBottom: 20
   }
 
 }))(Grid);
+
+export const EventContainer = withStyles(() => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+  }
+
+}))(Grid);
+
+export const EventCard = withStyles(() => ({
+  root: {
+    width: 328,
+    height: 170
+  }
+
+}))(Card);

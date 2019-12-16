@@ -14,6 +14,7 @@ import {
 } from '../styles/StyledComponents.jsx';
 
 import DialogCalendarBtn from './DialogCalendarBtn.jsx'
+import DialogEventInfo from './DialogEventInfo.jsx'
 
 const styles = makeStyles(theme => ({
   dialog: {
@@ -76,8 +77,9 @@ export default function AttendDialog({ date, time, title, hosts }) {
             <DialogSubheader>Fanny pack la croix mixtape, gastropub cardigan iceland polaroid hammock typewriter</DialogSubheader>
           </SubheaderContainer>
           <DialogCalendarBtn />
+          <DialogEventInfo />
         </DialogContent>
       </Dialog>
-    </div >
+    </div>
   );
 }
