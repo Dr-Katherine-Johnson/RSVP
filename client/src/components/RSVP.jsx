@@ -53,7 +53,7 @@ class RSVP extends React.Component {
           <BoldText>FREE</BoldText>
           <FavoriteButton
             icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
-          <AttendDialog date={date} time={time} title={eventTitle} hosts={eventHosts} />
+          <AttendDialog event={event} time={time} title={eventTitle} hosts={eventHosts} />
         </TextButtonContainer>
       </Container>
     )
