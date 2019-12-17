@@ -173,7 +173,7 @@ export const DialogSubheader = withStyles(() => ({
 
 }))(Typography);
 
-export const CalendarButton = withStyles(() => ({
+export const TealButton = withStyles(() => ({
   root: {
     border: '#0098ab solid 1px',
     backgroundColor: 'transparent',
@@ -247,3 +247,55 @@ export const ShareDialogText = withStyles(() => ({
   }
 
 }))(Typography);
+
+export const EditButton = withStyles(() => ({
+  root: {
+    color: '#0098ab',
+    textTransform: 'none',
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+    fontFamily: Roboto,
+    fontSize: 16,
+    padding: 'none'
+  },
+
+}))(Button);
+
+export const NotGoingButton = withStyles(() => ({
+  root: {
+    border: '#a2a2a2 solid 1px',
+    backgroundColor: '#e6e6e6',
+    borderRadius: '7px',
+    width: 170,
+    height: 42,
+    color: '#757575',
+    textTransform: 'none',
+    '&:hover': {
+      backgroundColor: '#c5c4c4',
+    },
+    fontWeight: 600,
+    fontFamily: Roboto,
+    fontSize: 14,
+    marginRight: 20
+  },
+
+}))(Button);
+
+export const EditContainer = withStyles(() => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginRight: 20,
+    paddingRight: 20
+  }
+
+}))(Grid);
+
+export const EditTextContainer = withStyles(() => ({
+  root: {
+    padding: '40px 0px 20px 0px',
+    marginBottom: 40
+  }
+
+}))(Grid);

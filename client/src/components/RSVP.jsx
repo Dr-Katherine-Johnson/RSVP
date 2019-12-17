@@ -11,10 +11,12 @@ import {
   TextButtonContainer,
   FavoriteButton,
   TimeDate,
-  BoldText
+  BoldText,
+  EditContainer
 } from '../styles/StyledComponents.jsx';
 
-import AttendDialog from './AttendDialog.jsx'
+import AttendDialog from './AttendDialog.jsx';
+import EditDialog from './EditDialog.jsx';
 
 class RSVP extends React.Component {
   constructor(props) {
@@ -23,11 +25,12 @@ class RSVP extends React.Component {
       eventHosts: [],
       showAttendBtn: true
     }
-    this.handleClickAttend = this.handleClickAttend.bind(this)
+    this.handleClickAttend = this.handleClickAttend.bind(this);
+    this.handleClickNotGoing = this.handleClickNotGoing.bind(this)
   }
 
   componentDidMount() {
-    axios.get('/rsvp/hosts/0')
+    axios.get('/rsvp/hosts/3')
       .then((eventHosts) => {
         this.setState({
           eventHosts: eventHosts.data
@@ -41,6 +44,12 @@ class RSVP extends React.Component {
   handleClickAttend() {
     this.setState({
       showAttendBtn: false
+    })
+  }
+
+  handleClickNotGoing() {
+    this.setState({
+      showAttendBtn: true
     })
   }
 
@@ -58,9 +67,19 @@ class RSVP extends React.Component {
           <BoldText>{eventTitle}</BoldText>
         </EventInfoContainer>
         <TextButtonContainer>
-          <BoldText>FREE</BoldText>
-          <FavoriteButton
-            icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
+          {!this.state.showAttendBtn ?
+            (<EditContainer>
+              <BoldText>You're going!</BoldText>
+              <EditDialog handleClickNotGoing={this.handleClickNotGoing} />
+            </EditContainer>
+            ) : (
+              <>
+                <BoldText>FREE</BoldText>
+                <FavoriteButton
+                  icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
+              </>
+            )
+          }
           <AttendDialog event={event} time={time} title={eventTitle} hosts={eventHosts} handleClickAttend={this.handleClickAttend} showAttendBtn={this.state.showAttendBtn} />
         </TextButtonContainer>
       </Container>
