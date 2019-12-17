@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, MenuItem, Divider } from '@material-ui/core';
-import { CalendarButton, CalendarBtnContainer } from '../styles/StyledComponents.jsx'
+import { TealButton, CalendarBtnContainer } from '../styles/StyledComponents.jsx'
 
 
 const DialogCalendarBtn = () => {
@@ -17,9 +17,9 @@ const DialogCalendarBtn = () => {
   return (
     <div>
       <CalendarBtnContainer>
-        <CalendarButton onClick={handleClickCalendar}>
+        <TealButton onClick={handleClickCalendar}>
           Add to calendar
-        </CalendarButton>
+        </TealButton>
       </CalendarBtnContainer>
       <Menu
         anchorEl={anchorEl}
