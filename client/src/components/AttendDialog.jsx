@@ -2,11 +2,12 @@ import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import { makeStyles, Avatar } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import MuiDialogContent from '@material-ui/core/DialogContent';
 import {
   AttendButton,
   DialogClose,
   DialogContent,
-  AvatarContainer,
+  AvatarHeaderContainer,
   HeaderContainer,
   DialogHeader,
   SubheaderContainer,
@@ -20,12 +21,16 @@ import ShareDialog from './ShareDialog.jsx';
 const styles = makeStyles(theme => ({
   dialog: {
     width: 440,
-    height: 555,
+    height: 600,
   },
   large: {
     width: theme.spacing(9),
     height: theme.spacing(9),
   },
+  avatar: {
+    justifyContent: 'center',
+    padding: '45px 0px 20px 0px'
+  }
 }));
 
 export default function AttendDialog({ event, time, title, hosts, handleClickAttend, showAttendBtn }) {
@@ -48,37 +53,39 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
       </AttendButton>}
       <Dialog onClose={handleClose} open={open} classes={{ paper: classes.dialog }}>
         <DialogClose onClose={handleClose} />
-        <DialogContent >
-          <AvatarContainer>
+        <MuiDialogContent >
+          <AvatarHeaderContainer>
             {hosts.length > 1 ? (
-              <AvatarGroup>
-                <Avatar src={hosts[0].thumbnail} className={classes.large} />
-                <Avatar src={hosts[1].thumbnail} className={classes.large} />
-              </AvatarGroup>
-            ) : (
-                hosts.map(host => {
-                  return <Avatar src={host.thumbnail} className={classes.large} />
-                })
-              )
-            }
-          </AvatarContainer>
-          <HeaderContainer>
-            {hosts.length > 1 ? (
-              <DialogHeader>These are your hosts for the event</DialogHeader>
+              <>
+                <AvatarGroup className={classes.avatar}>
+                  <Avatar src={hosts[0].thumbnail} className={classes.large} />
+                  <Avatar src={hosts[1].thumbnail} className={classes.large} />
+                </AvatarGroup>
+                <HeaderContainer>
+                  <DialogHeader>These are your hosts for the event</DialogHeader>
+                </HeaderContainer>
+              </>
             ) : (
                 hosts.map(host => {
                   const firstName = host.name.split(' ')[0]
-                  return <DialogHeader>This is {firstName}, your host for the event</DialogHeader>
+                  return <>
+                    <AvatarGroup className={classes.avatar}>
+                      <Avatar src={host.thumbnail} className={classes.large} />
+                    </AvatarGroup>
+                    <HeaderContainer>
+                      <DialogHeader>This is {firstName}, your host for the event</DialogHeader>
+                    </HeaderContainer>
+                  </>
                 })
               )
             }
-          </HeaderContainer>
+          </AvatarHeaderContainer>
           <SubheaderContainer>
             <DialogSubheader>Fanny pack la croix mixtape, gastropub cardigan iceland polaroid hammock typewriter</DialogSubheader>
           </SubheaderContainer>
           <DialogCalendarBtn />
           <DialogEventInfo event={event} title={title} time={time} />
-        </DialogContent>
+        </MuiDialogContent>
       </Dialog>
     </div >
   );

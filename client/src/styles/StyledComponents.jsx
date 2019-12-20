@@ -127,10 +127,11 @@ export const DialogContent = withStyles(theme => ({
   },
 }))(MuiDialogContent);
 
-export const AvatarContainer = withStyles(() => ({
+export const AvatarHeaderContainer = withStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
+    flexDirection: 'column',
     marginBottom: 10
   }
 
@@ -160,7 +161,7 @@ export const SubheaderContainer = withStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     textAlign: 'center',
-    padding: '20px 20px'
+    padding: '0px 0px 20px 0px'
   }
 
 }))(Grid);
