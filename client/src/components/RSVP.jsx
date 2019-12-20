@@ -67,12 +67,14 @@ class RSVP extends React.Component {
           <BoldText>{eventTitle}</BoldText>
         </EventInfoContainer>
         <TextButtonContainer>
+          {/* if Attend button IS NOT visible show message You're Going and the Edit RSVP button */}
           {!this.state.showAttendBtn ?
             (<EditContainer>
               <BoldText>You're going!</BoldText>
               <EditDialog handleClickNotGoing={this.handleClickNotGoing} />
             </EditContainer>
             ) : (
+              // if Attend buttons IS visible show text FREE
               <>
                 <BoldText>FREE</BoldText>
                 <FavoriteButton

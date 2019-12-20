@@ -46,11 +46,14 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
 
   return (
     <div>
+      {/* if Attend button IS NOT visible show Share button */}
       {!showAttendBtn ?
         <ShareDialog />
-        : <AttendButton onClick={() => { handleClickOpen(); handleClickAttend() }}>
+        :
+        // otherwise show Attend button
+        <AttendButton onClick={() => { handleClickOpen(); handleClickAttend() }}>
           Attend
-      </AttendButton>}
+        </AttendButton>}
       <Dialog onClose={handleClose} open={open} classes={{ paper: classes.dialog }}>
         <DialogClose onClose={handleClose} />
         <MuiDialogContent >
