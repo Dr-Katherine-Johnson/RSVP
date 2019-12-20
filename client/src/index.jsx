@@ -9,4 +9,4 @@ var event = {
   "private": true
 }
 
-ReactDOM.render(<RSVP event={event} />, document.getElementById('app'));
+ReactDOM.render(<RSVP event={event} />, document.getElementById('rsvp'));
