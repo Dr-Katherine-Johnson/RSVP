@@ -57,7 +57,7 @@ export const TextButtonContainer = withStyles(() => ({
 export const FavoriteButton = withStyles(() => ({
   root: {
     border: '#c5c4c4 solid 1px',
-    borderRadius: '7px',
+    borderRadius: '8px',
     width: 34,
     height: 34,
     marginLeft: 60,
@@ -71,7 +71,7 @@ export const FavoriteButton = withStyles(() => ({
 export const AttendButton = withStyles(() => ({
   root: {
     backgroundColor: '#f55858',
-    borderRadius: '7px',
+    borderRadius: '8px',
     width: 114,
     height: 54,
     color: '#fff',
@@ -178,7 +178,7 @@ export const TealButton = withStyles(() => ({
   root: {
     border: '#0098ab solid 1px',
     backgroundColor: 'transparent',
-    borderRadius: '7px',
+    borderRadius: '8px',
     width: 149,
     height: 42,
     color: '#0098ab',
@@ -223,7 +223,7 @@ export const ShareButton = withStyles(() => ({
   root: {
     border: '#757575 solid 1px',
     backgroundColor: '#e6e6e6',
-    borderRadius: '7px',
+    borderRadius: '8px',
     width: 129.56,
     height: 54,
     color: '#757575',
@@ -267,7 +267,7 @@ export const NotGoingButton = withStyles(() => ({
   root: {
     border: '#a2a2a2 solid 1px',
     backgroundColor: '#e6e6e6',
-    borderRadius: '7px',
+    borderRadius: '8px',
     width: 170,
     height: 42,
     color: '#757575',
