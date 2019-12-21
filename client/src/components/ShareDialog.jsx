@@ -5,6 +5,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import LinkIcon from '@material-ui/icons/Link';
+import Icon from '@material-ui/core/Icon';
 
 import {
   ShareButton,
@@ -35,6 +36,8 @@ const styles = makeStyles(theme => ({
   }
 }));
 
+const socials = [['Facebook', FacebookIcon], ['Twitter', TwitterIcon], ['LinkedIn', LinkedInIcon], ['Copy link', LinkIcon]];
+
 export default function ShareDialog() {
   const classes = styles()
   const [open, setOpen] = React.useState(false);
@@ -55,21 +58,24 @@ export default function ShareDialog() {
         <DialogClose onClose={handleClose} />
         <DialogContent >
           <DialogHeader className={classes.header}>Share this event</DialogHeader>
-          <Grid className={classes.socialContainer}>
-            <FacebookIcon className={classes.icon} /><ShareDialogText>Facebook</ShareDialogText>
-          </Grid>
-          <Divider />
-          <Grid className={classes.socialContainer}>
-            <TwitterIcon className={classes.icon} /><ShareDialogText>Twitter</ShareDialogText>
-          </Grid>
-          <Divider />
-          <Grid className={classes.socialContainer}>
-            <LinkedInIcon className={classes.icon} /><ShareDialogText>LinkedIn</ShareDialogText>
-          </Grid>
-          <Divider />
-          <Grid className={classes.socialContainer}>
-            <LinkIcon className={classes.icon} /><ShareDialogText>Copy link</ShareDialogText>
-          </Grid>
+          {socials.map((item, i) => {
+            return <div key={i}>
+              {i === socials.length - 1 ?
+                <>
+                  <Grid className={classes.socialContainer}>
+                    <Icon component={item[1]} className={classes.icon} /><ShareDialogText>{item[0]}</ShareDialogText>
+                  </Grid>
+                </>
+                :
+                <>
+                  <Grid className={classes.socialContainer}>
+                    <Icon component={item[1]} className={classes.icon} /><ShareDialogText>{item[0]}</ShareDialogText>
+                  </Grid>
+                  <Divider />
+                </>
+              }
+            </div>
+          })}
         </DialogContent>
       </Dialog>
     </div>
