@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
+import queryString from 'query-string';
 
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -30,7 +31,11 @@ class RSVP extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/rsvp/hosts/3')
+    // window.location.search is ?event_id=0
+    const value = queryString.parse(window.location.search)
+    const id = value.event_id
+
+    axios.get(`/rsvp/hosts/${id}`)
       .then((eventHosts) => {
         this.setState({
           eventHosts: eventHosts.data
