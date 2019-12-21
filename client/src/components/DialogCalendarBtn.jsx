@@ -30,8 +30,8 @@ const DialogCalendarBtn = () => {
       >
         {calendars.map((calendar, i) => {
           return <div key={i}>
-            {/* if the calendar is Yahoo don't add the divider otherwise add divider */}
-            {calendar === 'Yahoo' ?
+            {/* if its the last item on the calendar list don't add the divider otherwise add divider */}
+            {i === calendars.length - 1 ?
               <>
                 <MenuItem onClick={handleCloseCalendar}>{calendar}</MenuItem>
               </>
