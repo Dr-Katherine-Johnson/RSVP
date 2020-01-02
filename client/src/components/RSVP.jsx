@@ -24,7 +24,8 @@ class RSVP extends React.Component {
     super(props)
     this.state = {
       eventHosts: [],
-      showAttendBtn: true
+      showAttendBtn: true,
+      event: {}
     }
     this.handleClickAttend = this.handleClickAttend.bind(this);
     this.handleClickNotGoing = this.handleClickNotGoing.bind(this)
@@ -39,6 +40,16 @@ class RSVP extends React.Component {
       .then((eventHosts) => {
         this.setState({
           eventHosts: eventHosts.data
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+    axios.get(`http://localhost:5000/event/${id}`)
+      .then((event) => {
+        this.setState({
+          event: event.data
         })
       })
       .catch((err) => {
@@ -59,11 +70,11 @@ class RSVP extends React.Component {
   }
 
   render() {
-    const event = this.props.event;
+    const event = this.state.event;
     const eventHosts = this.state.eventHosts
     const date = moment(event.local_date_time).utc().format('ddd, MMM DD');
     const time = moment(event.local_date_time).utc().format('h:mm A');
-    const eventTitle = this.props.event.title
+    const eventTitle = this.state.event.title
 
     return (
       <Container>
