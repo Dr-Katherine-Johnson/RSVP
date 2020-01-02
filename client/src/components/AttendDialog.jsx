@@ -69,16 +69,16 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
                 </HeaderContainer>
               </>
             ) : (
-                hosts.map(host => {
+                hosts.map((host, i) => {
                   const firstName = host.name.split(' ')[0]
-                  return <>
+                  return <div key={i}>
                     <AvatarGroup className={classes.avatar}>
                       <Avatar src={host.thumbnail} className={classes.large} />
                     </AvatarGroup>
                     <HeaderContainer>
                       <DialogHeader>This is {firstName}, your host for the event</DialogHeader>
                     </HeaderContainer>
-                  </>
+                  </div>
                 })
               )
             }
