@@ -36,7 +36,7 @@ class RSVP extends React.Component {
     const value = queryString.parse(window.location.search)
     const id = value.event_id
 
-    axios.get(`/rsvp/hosts/${id}`)
+    axios.get(`http://ec2-13-58-208-149.us-east-2.compute.amazonaws.com/rsvp/hosts/${id}`)
       .then((eventHosts) => {
         this.setState({
           eventHosts: eventHosts.data
@@ -46,7 +46,7 @@ class RSVP extends React.Component {
         console.log(err)
       })
 
-    axios.get(`http://localhost:5000/event/${id}`)
+    axios.get(`http://ec2-18-224-109-0.us-east-2.compute.amazonaws.com/event/${id}`)
       .then((event) => {
         this.setState({
           event: event.data
