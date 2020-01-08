@@ -42,7 +42,8 @@ const styles = makeStyles(theme => ({
     cursor: 'pointer'
   },
   socialIcon: {
-    paddingRight: 10
+    width: 34,
+    height: 24
   }
 }));
 
@@ -57,13 +58,16 @@ const DialogEventInfo = ({ event, title, time }) => {
             <CheckCircleIcon className={classes.responseIcon} /> <Typography className={classes.responseText}>Your response: Going</Typography>
           </Grid>
           <Grid>
-            <Typography className={classes.title}>{title}</Typography>
-            <Typography className={classes.dateTime}>{date}, {time}</Typography>
+            <div className={classes.title}>{title}</div>
+            <div className={classes.dateTime}>{date}, {time}</div>
           </Grid>
           <Grid className={classes.social}>
             <FacebookIcon className={classes.socialIcon} />
             <TwitterIcon className={classes.socialIcon} />
-            <LinkedInIcon />
+            <LinkedInIcon style={{
+              width: 34,
+              height: 24
+            }} />
           </Grid>
         </CardContent>
       </EventCard>
