@@ -79,8 +79,12 @@ class RSVP extends React.Component {
     return (
       <Container>
         <EventInfoContainer>
-          <TimeDate>{date} · {time}</TimeDate>
-          <BoldText>{eventTitle}</BoldText>
+          <TimeDate>
+            <div>{date} · {time}</div>
+          </TimeDate>
+          <BoldText>
+            <div>{eventTitle}</div>
+          </BoldText>
         </EventInfoContainer>
         <TextButtonContainer>
           {/* if Attend button IS NOT visible show message You're Going and the Edit RSVP button */}
@@ -94,7 +98,7 @@ class RSVP extends React.Component {
               <>
                 <BoldText>FREE</BoldText>
                 <FavoriteButton
-                  icon={<StarBorderIcon />} checkedIcon={<StarIcon />} value="checkedH" />
+                  icon={<StarBorderIcon />} checkedIcon={<StarIcon />} />
               </>
             )
           }
