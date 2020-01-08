@@ -58,8 +58,8 @@ export const FavoriteButton = withStyles(() => ({
   root: {
     border: '#c5c4c4 solid 1px',
     borderRadius: '8px',
-    width: 34,
-    height: 34,
+    width: 54,
+    height: 54,
     marginLeft: 60,
     '&:hover': {
       backgroundColor: 'transparent',
@@ -96,7 +96,7 @@ export const TimeDate = withStyles(() => ({
     fontWeight: 300
   }
 
-}))(Typography);
+}))(Grid);
 
 export const BoldText = withStyles(() => ({
   root: {
@@ -105,7 +105,7 @@ export const BoldText = withStyles(() => ({
     fontWeight: 600
   }
 
-}))(Typography);
+}))(Grid);
 
 export const DialogClose = withStyles(styles)(props => {
   const { children, classes, onClose } = props;
@@ -142,7 +142,8 @@ export const HeaderContainer = withStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     textAlign: 'center',
-    padding: '0px 50px'
+    padding: '0px 60px',
+    lineHeight: 'normal'
   }
 
 }))(Grid);
@@ -154,7 +155,7 @@ export const DialogHeader = withStyles(() => ({
     fontWeight: 600
   }
 
-}))(Typography);
+}))(Grid);
 
 export const SubheaderContainer = withStyles(() => ({
   root: {
@@ -247,7 +248,7 @@ export const ShareDialogText = withStyles(() => ({
     cursor: 'pointer'
   }
 
-}))(Typography);
+}))(Grid);
 
 export const EditButton = withStyles(() => ({
   root: {
@@ -295,6 +296,7 @@ export const EditContainer = withStyles(() => ({
 
 export const EditTextContainer = withStyles(() => ({
   root: {
+    fontFamily: Roboto,
     padding: '40px 0px 20px 0px',
     marginBottom: 40
   }
