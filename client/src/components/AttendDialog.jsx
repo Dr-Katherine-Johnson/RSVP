@@ -6,7 +6,6 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import {
   AttendButton,
   DialogClose,
-  DialogContent,
   AvatarHeaderContainer,
   HeaderContainer,
   DialogHeader,
@@ -22,10 +21,6 @@ const styles = makeStyles(theme => ({
   dialog: {
     width: 440,
     height: 600,
-  },
-  large: {
-    width: theme.spacing(9),
-    height: theme.spacing(9),
   },
   avatar: {
     justifyContent: 'center',
@@ -61,11 +56,13 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
             {hosts.length > 1 ? (
               <>
                 <AvatarGroup className={classes.avatar}>
-                  <Avatar src={hosts[0].thumbnail} className={classes.large} />
-                  <Avatar src={hosts[1].thumbnail} className={classes.large} />
+                  <Avatar src={hosts[0].thumbnail} style={{ width: 72, height: 72 }} />
+                  <Avatar src={hosts[1].thumbnail} style={{ width: 72, height: 72 }} />
                 </AvatarGroup>
                 <HeaderContainer>
-                  <DialogHeader>These are your hosts for the event</DialogHeader>
+                  <DialogHeader>
+                    <div>These are your hosts for the event</div>
+                  </DialogHeader>
                 </HeaderContainer>
               </>
             ) : (
@@ -73,7 +70,7 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
                   const firstName = host.name.split(' ')[0]
                   return <div key={i}>
                     <AvatarGroup className={classes.avatar}>
-                      <Avatar src={host.thumbnail} className={classes.large} />
+                      <Avatar src={host.thumbnail} style={{ width: 72, height: 72 }} />
                     </AvatarGroup>
                     <HeaderContainer>
                       <DialogHeader>This is {firstName}, your host for the event</DialogHeader>
