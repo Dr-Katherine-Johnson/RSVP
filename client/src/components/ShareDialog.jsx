@@ -18,18 +18,21 @@ import {
 const styles = makeStyles(theme => ({
   dialog: {
     width: 440,
-    height: 373,
+    height: 380,
     padding: 20
   },
   socialContainer: {
     display: 'flex',
-    justifyContent: 'row',
+    alignItems: 'center',
     padding: '15px 0px'
+
   },
   icon: {
     color: '#a2a2a2',
+    cursor: 'pointer',
     paddingRight: 5,
-    cursor: 'pointer'
+    width: 30,
+    height: 30
   },
   header: {
     marginBottom: 10
@@ -63,13 +66,13 @@ export default function ShareDialog() {
               {i === socials.length - 1 ?
                 <>
                   <Grid className={classes.socialContainer}>
-                    <Icon component={item[1]} className={classes.icon} /><ShareDialogText>{item[0]}</ShareDialogText>
+                    <Icon component={item[1]} className={classes.icon} /><ShareDialogText><div>{item[0]}</div></ShareDialogText>
                   </Grid>
                 </>
                 :
                 <>
                   <Grid className={classes.socialContainer}>
-                    <Icon component={item[1]} className={classes.icon} /><ShareDialogText>{item[0]}</ShareDialogText>
+                    <Icon component={item[1]} className={classes.icon} /><ShareDialogText><div>{item[0]}</div></ShareDialogText>
                   </Grid>
                   <Divider />
                 </>
