@@ -1,6 +1,6 @@
 import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import { makeStyles, Typography, Grid } from '@material-ui/core';
+import { makeStyles, Grid } from '@material-ui/core';
 
 import {
   DialogClose,
@@ -14,8 +14,6 @@ import {
 
 const styles = makeStyles(theme => ({
   dialog: {
-    width: 440,
-    height: 304,
     padding: 20
   },
   button: {
@@ -25,7 +23,8 @@ const styles = makeStyles(theme => ({
   },
   subheader: {
     fontSize: 20,
-    fontWeight: 600
+    fontWeight: 600,
+    paddingBottom: 5,
   },
   text: {
     fontSize: 16
@@ -53,8 +52,8 @@ export default function EditDialog({ handleClickNotGoing }) {
         <DialogContent >
           <DialogHeader>Update your RSVP</DialogHeader>
           <EditTextContainer>
-            <Typography className={classes.subheader}>Attendees</Typography>
-            <Typography className={classes.text}>Current response: You're going</Typography>
+            <div className={classes.subheader}>Attendees</div>
+            <div className={classes.text}>Current response: You're going</div>
           </EditTextContainer>
           <Grid>
             <NotGoingButton onClick={() => { handleClose(); handleClickNotGoing() }} >
