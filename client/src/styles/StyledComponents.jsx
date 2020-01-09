@@ -25,6 +25,7 @@ const styles = theme => ({
 
 export const Container = withStyles(() => ({
   root: {
+    backgroundColor: '#fff',
     border: '#e6e6e6 solid 1px',
     maxWidth: '100%',
     height: 100,
