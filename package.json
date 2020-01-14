@@ -6,8 +6,10 @@
   "scripts": {
     "test": "jest",
     "seed": "node database/seed.js",
-    "start": "nodemon node server/index.js",
-    "react-dev": "webpack -d --watch"
+    "start-dev": "nodemon node server/index.js",
+    "start": "node server/index.js",
+    "react-dev": "webpack -d --watch",
+    "react-prod": "webpack -p --watch"
   },
   "repository": {
     "type": "git",
