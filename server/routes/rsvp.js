@@ -9,29 +9,26 @@ router.route('/:eventId').get((req, res) => {
 //-------------------------------------------------------------------------
 
 router.route('/').post((req, res) => {
-  //console.log('req.body', req.body);
   Event.create(req.body, (err, doc) => {
     if (err) {
       throw new Error(err);
     } else {
-      res.send('saved!');
+      res.send(doc);
     }
   });
 });
 
 router.route('/:eventId').put((req, res) => {
-  console.log('req.body', req.body);
   Event.updateOne({ eventId: req.params.eventId }, req.body, (err, doc) => {
     if (err) {
       throw new Error(err);
     } else {
-      res.send('updated!');
+      res.send(doc);
     }
   });
 });
 
 router.route('/:eventId').delete((req, res) => {
-  console.log('req.body', req.body);
   Event.deleteOne({ eventId: req.params.eventId }, (err, doc) => {
     if (err) {
       throw new Error(err);
