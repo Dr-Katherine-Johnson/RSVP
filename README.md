@@ -17,10 +17,10 @@
 
 ## CRUD
 
-GET: ('/:eventId').get
-POST: ('/').post
-PUT: ('/:eventId').put
-DELETE: ('/:eventId').delete
+- GET: ('/:eventId').get
+- POST: ('/').post
+- PUT: ('/:eventId').put
+- DELETE: ('/:eventId').delete
 
 ## Requirements
 
