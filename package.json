@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test-endpoints": "mocha tests/endpoint.test.js",
     "test": "jest",
     "seed": "node database/seed.js",
     "start-dev": "nodemon node server/index.js",
