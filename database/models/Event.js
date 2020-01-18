@@ -9,7 +9,7 @@ const eventSchema = new mongoose.Schema({
   attendees: [Member],
   eventOrganizer: [Member],
   waitlist: [Member]
-})
+});
 
 const Event = mongoose.model('Event', eventSchema);
 
