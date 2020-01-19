@@ -15,7 +15,7 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
 
-## CRUD
+## API
 
 - GET: ('/:eventId').get
 - POST: ('/').post
