@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+- https://github.com/teamName/repo
+- https://github.com/teamName/repo
+- https://github.com/teamName/repo
+- https://github.com/teamName/repo
 
 ## Table of Contents
 
@@ -15,9 +15,12 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
 
-## Usage
+## API
 
-> Some usage instructions
+- GET: ('/:eventId').get
+- POST: ('/').post
+- PUT: ('/:eventId').put
+- DELETE: ('/:eventId').delete
 
 ## Requirements
 
@@ -36,4 +39,3 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
-
