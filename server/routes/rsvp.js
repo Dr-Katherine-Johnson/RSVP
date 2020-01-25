@@ -11,7 +11,7 @@ router.route('/:eventId').get((req, res) => {
 router.route('/').post((req, res) => {
   Event.create(req.body, (err, doc) => {
     if (err) {
-      throw new Error(err);
+      res.send(err);
     } else {
       res.send(doc);
     }
@@ -21,7 +21,7 @@ router.route('/').post((req, res) => {
 router.route('/:eventId').put((req, res) => {
   Event.updateOne({ eventId: req.params.eventId }, req.body, (err, doc) => {
     if (err) {
-      throw new Error(err);
+      res.send(err);
     } else {
       res.send(doc);
     }
@@ -31,7 +31,7 @@ router.route('/:eventId').put((req, res) => {
 router.route('/:eventId').delete((req, res) => {
   Event.deleteOne({ eventId: req.params.eventId }, (err, doc) => {
     if (err) {
-      throw new Error(err);
+      res.send(err);
     } else {
       res.send('deleted!');
     }
