@@ -1,64 +1,30 @@
-const faker = require('faker');
-const _ = require('lodash');
+const dataGen = require('./dataGen.js');
 const db = require('./index.js');
-const Event = require('./models/Event.js');
 
-let members = [];
+const seed = async () => {
+  //await dataGen();
 
-for (let i = 0; i < 500; i++) {
-  const memberId = `m${i}`;
-  const name = faker.name.findName();
-  const avatar = 'http://placecorgi.com/100';
-  const thumbnail = 'http://placecorgi.com/50';
-  const favorite = faker.random.boolean();
-
-  let newMember = {
-    memberId,
-    name,
-    avatar,
-    thumbnail,
-    favorite
-  };
-
-  members.push(newMember);
-}
-
-let events = [];
-const randomNum = faker.random.number({ min: 1, max: 100 });
-
-for (let i = 0; i < 100; i++) {
-  const eventId = i;
-  const limit = faker.random.boolean();
-  const setLimit = limit ? faker.random.number({ min: 20, max: 100 }) : null;
-  const attendees = limit
-    ? _.sampleSize(members, setLimit)
-    : _.sampleSize(members, randomNum);
-  const numEventOrg = faker.random.number({ min: 1, max: 2 });
-  const eventOrganizer =
-    numEventOrg > 1 ? [attendees[0], attendees[1]] : [attendees[0]];
-  const waitlist = setLimit === null ? null : _.sampleSize(members, randomNum);
-
-  let newEvents = {
-    eventId,
-    limit,
-    setLimit,
-    attendees,
-    eventOrganizer,
-    waitlist
-  };
-
-  events.push(newEvents);
-}
-console.log('events', events);
-const insertSampleEvents = function() {
-  Event.deleteMany(err => {
-    console.log('Removed Event');
-  })
-    .then(() => Event.create(events))
-    .then(() => db.close())
-    .then(() => console.log('Database seeded!'));
+  await db.query(
+    `LOAD DATA LOCAL INFILE  '/Users/roman/Desktop/rsvp/database/csvStorage/eventData.csv' INTO TABLE events FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n'(eventLimit, setLimit);`,
+    (err, results) => {
+      if (err) {
+        console.log('err:', err);
+      } else {
+        console.log('no err, results:', results);
+      }
+    }
+  );
+  await db.query(
+    //`INSERT INTO members (name, avatar, thumbnail) VALUES (name, avatar, thumbnail);`,
+    `LOAD DATA LOCAL INFILE  '/Users/roman/Desktop/rsvp/database/csvStorage/memberData.csv' INTO TABLE members FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n'(name, avatar, thumbnail, favorite, waiting, attending, organizing);`,
+    (err, results) => {
+      if (err) {
+        console.log('err:', err);
+      } else {
+        console.log('no err, results:', results);
+      }
+    }
+  );
 };
 
-insertSampleEvents();
-
-module.exports = events;
+seed();
