@@ -9,18 +9,6 @@ DROP DATABASE IF EXISTS meetup;
 CREATE DATABASE meetup;
 USE meetup;
 
--- Table 'events'
---
--- ---
-
-DROP TABLE IF EXISTS `events`;
-
-CREATE TABLE `events` (
-  `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `eventLimit` BOOLEAN NOT NULL,
-  `setLimit` INTEGER NOT NULL,
-  PRIMARY KEY (`id`)
-);
 -- ---
 -- Table 'members'
 --
@@ -30,13 +18,27 @@ DROP TABLE IF EXISTS `members`;
 
 CREATE TABLE `members` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  `avatar` VARCHAR(100) NOT NULL,
-  `thumbnail` VARCHAR(100) NOT NULL,
-  `favorite` BOOLEAN DEFAULT NULL,
-  `waiting` INTEGER DEFAULT NULL,
-  `attending` INTEGER DEFAULT NULL,
-  `organizing` INTEGER DEFAULT NULL,
+  `name` VARCHAR(100) NOT NULL DEFAULT 'NULL',
+  `avatar` VARCHAR(100) NULL DEFAULT NULL,
+  `thumbnail` VARCHAR(100) NULL DEFAULT NULL,
+  `favorite` BOOLEAN NULL DEFAULT NULL,
+  `waiting` INTEGER NULL DEFAULT NULL,
+  `attending` INTEGER NULL DEFAULT NULL,
+  `organizing` INTEGER NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'events'
+--
+-- ---
+
+DROP TABLE IF EXISTS `events`;
+
+CREATE TABLE `events` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `eventLimit` BOOLEAN NULL DEFAULT NULL,
+  `setLimit` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -59,11 +61,11 @@ ALTER TABLE `members` ADD FOREIGN KEY (organizing) REFERENCES `events` (`id`);
 -- Test Data
 -- ---
 
--- INSERT INTO `events` (`eventLimit`,`setLimit`) VALUES
--- (1, 25);
--- INSERT INTO `members` (`name`,`avatar`,`thumbnail`,`favorite`,`waiting`,`attending`,`organizing`) VALUES
--- ('Roman Emmons','this.com','that.com', null, 1, null, 1);
 
+-- INSERT INTO `events` (`eventLimit`,`setLimit`) VALUES
+-- ('1','10');
+-- INSERT INTO `members` (`name`,`avatar`,`thumbnail`,`favorite`,`waiting`,`attending`,`organizing`) VALUES
+-- ('Roman Emmons', 'pic.com','pic.com','1','1','1','1');
 
 --  Execute this file from the command line by typing:
 --   mysql -u root -p < database/schema.sql
