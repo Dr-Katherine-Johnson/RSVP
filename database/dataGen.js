@@ -36,8 +36,8 @@ const dataGen = async () => {
     imageArr.push(image);
   }
 
-  // one loop creates 1 event & members (attendees + waitlist)
-  for (let i = 0; i < 100; i++) {
+  // one loop creates 1 event & n members (attendees + waitlist)
+  for (let i = 0; i <= 10; i++) {
     const bitBool = faker.random.number({ min: 0, max: 1 }); // sets boolean for eventLimit
     const setLimit =
       bitBool === 1 ? faker.random.number({ min: 5, max: 10 }) : 0;
@@ -105,7 +105,10 @@ const dataGen = async () => {
       }
     }
 
-    if (counter === 100) {
+    // console.log('eventArr', eventArr);
+    // console.log('membersArr', membersArr);
+
+    if (counter === 10) {
       await eventCsvWriter.writeRecords(eventArr).catch(err => {
         console.log('err from eventCsv: ', err);
       }); // returns a promise

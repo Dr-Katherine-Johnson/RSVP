@@ -7,7 +7,7 @@
     "test-endpoints": "mocha tests/endpoint.test.js",
     "test": "jest",
     "seed": "node database/seed.js",
-    "start-dev": "nodemon node server/index.js",
+    "react-server": "nodemon node server/index.js",
     "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
     "react-prod": "webpack -p --watch"
