@@ -19,12 +19,12 @@ DROP TABLE IF EXISTS `members`;
 CREATE TABLE `members` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL DEFAULT 'NULL',
-  `avatar` VARCHAR(100) NULL DEFAULT NULL,
-  `thumbnail` VARCHAR(100) NULL DEFAULT NULL,
-  `favorite` BOOLEAN NULL DEFAULT NULL,
-  `waiting` INTEGER NULL DEFAULT NULL,
-  `attending` INTEGER NULL DEFAULT NULL,
-  `organizing` INTEGER NULL DEFAULT NULL,
+  `avatar` VARCHAR(100) DEFAULT NULL,
+  `thumbnail` VARCHAR(100) DEFAULT NULL,
+  `favorite` BOOLEAN DEFAULT NULL,
+  `waiting` INTEGER DEFAULT NULL,
+  `attending` INTEGER DEFAULT NULL,
+  `organizing` INTEGER DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -41,14 +41,6 @@ CREATE TABLE `events` (
   `setLimit` INTEGER NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
-
--- ---
--- Foreign Keys
--- ---
-
-ALTER TABLE `members` ADD FOREIGN KEY (waiting) REFERENCES `events` (`id`);
-ALTER TABLE `members` ADD FOREIGN KEY (attending) REFERENCES `events` (`id`);
-ALTER TABLE `members` ADD FOREIGN KEY (organizing) REFERENCES `events` (`id`);
 
 -- ---
 -- Table Properties
@@ -68,5 +60,13 @@ ALTER TABLE `members` ADD FOREIGN KEY (organizing) REFERENCES `events` (`id`);
 -- ('Roman Emmons', 'pic.com','pic.com','1','1','1','1');
 
 --  Execute this file from the command line by typing:
---   mysql -u root -p < database/schema.sql
+--   mysql -u root -p < database/preSchema.sql
 --   to create the database and the tables.
+
+
+
+-- update members set waiting=null where waiting=0;
+
+-- ALTER TABLE `members` ADD FOREIGN KEY (waiting) REFERENCES `events` (`id`);
+-- ALTER TABLE `members` ADD FOREIGN KEY (attending) REFERENCES `events` (`id`);
+-- ALTER TABLE `members` ADD FOREIGN KEY (organizing) REFERENCES `events` (`id`);
