@@ -1,5 +1,4 @@
 const faker = require('faker');
-const _ = require('lodash');
 const fs = require('fs');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
@@ -37,13 +36,13 @@ const dataGen = async () => {
   }
 
   // one loop creates 1 event & n members (attendees + waitlist)
-  for (let i = 0; i <= 10; i++) {
+  for (let i = 1; i <= 1000000; i++) {
     const bitBool = faker.random.number({ min: 0, max: 1 }); // sets boolean for eventLimit
     const setLimit =
-      bitBool === 1 ? faker.random.number({ min: 5, max: 10 }) : 0;
+      bitBool === 1 ? faker.random.number({ min: 5, max: 20 }) : 0;
 
     const numberOfAttendees =
-      setLimit !== 0 ? faker.random.number({ min: 5, max: 10 }) : setLimit;
+      setLimit !== 0 ? faker.random.number({ min: 5, max: 20 }) : setLimit;
 
     //event
     const event = {
@@ -75,7 +74,7 @@ const dataGen = async () => {
         avatar: avatar,
         thumbnail: avatar,
         favorite: attendingFav,
-        waiting: 0,
+        waiting: null,
         attending: i, //i === id/foreign key
         organizing: organizing
       };
@@ -85,7 +84,7 @@ const dataGen = async () => {
 
     //waitList
     if (setLimit !== 0) {
-      const waitlistLength = faker.random.number({ min: 1, max: 10 });
+      const waitlistLength = faker.random.number({ min: 5, max: 20 });
       for (let k = 0; k < waitlistLength; k++) {
         const name = faker.name.findName();
         const avatar = faker.image.avatar();
@@ -97,18 +96,15 @@ const dataGen = async () => {
           thumbnail: avatar,
           favorite: waitingFav,
           waiting: i, //i === id/foreign key
-          attending: 0,
-          organizing: 0
+          attending: null,
+          organizing: null
         };
 
         membersArr.push(waiting);
       }
     }
 
-    // console.log('eventArr', eventArr);
-    // console.log('membersArr', membersArr);
-
-    if (counter === 10) {
+    if (counter === 100) {
       await eventCsvWriter.writeRecords(eventArr).catch(err => {
         console.log('err from eventCsv: ', err);
       }); // returns a promise
@@ -120,7 +116,7 @@ const dataGen = async () => {
       counter = 0;
     }
   }
-  console.log('done!');
+  console.log('dataGen done!');
 };
 
 module.exports = dataGen;
