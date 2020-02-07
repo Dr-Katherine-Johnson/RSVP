@@ -1,64 +1,82 @@
-const faker = require('faker');
-const _ = require('lodash');
+const dataGen = require('./dataGen.js');
 const db = require('./index.js');
-const Event = require('./models/Event.js');
+var execSQL = require('exec-sql');
+var path = require('path');
 
-let members = [];
+const preSchemaInitiate = async () => {
+  execSQL.connect({
+    database: 'meetup',
+    user: 'root',
+    password: 'Fila'
+  });
 
-for (let i = 0; i < 500; i++) {
-  const memberId = `m${i}`;
-  const name = faker.name.findName();
-  const avatar = 'http://placecorgi.com/100';
-  const thumbnail = 'http://placecorgi.com/50';
-  const favorite = faker.random.boolean();
-
-  let newMember = {
-    memberId,
-    name,
-    avatar,
-    thumbnail,
-    favorite
-  };
-
-  members.push(newMember);
-}
-
-let events = [];
-const randomNum = faker.random.number({ min: 1, max: 100 });
-
-for (let i = 0; i < 100; i++) {
-  const eventId = i;
-  const limit = faker.random.boolean();
-  const setLimit = limit ? faker.random.number({ min: 20, max: 100 }) : null;
-  const attendees = limit
-    ? _.sampleSize(members, setLimit)
-    : _.sampleSize(members, randomNum);
-  const numEventOrg = faker.random.number({ min: 1, max: 2 });
-  const eventOrganizer =
-    numEventOrg > 1 ? [attendees[0], attendees[1]] : [attendees[0]];
-  const waitlist = setLimit === null ? null : _.sampleSize(members, randomNum);
-
-  let newEvents = {
-    eventId,
-    limit,
-    setLimit,
-    attendees,
-    eventOrganizer,
-    waitlist
-  };
-
-  events.push(newEvents);
-}
-console.log('events', events);
-const insertSampleEvents = function() {
-  Event.deleteMany(err => {
-    console.log('Removed Event');
-  })
-    .then(() => Event.create(events))
-    .then(() => db.close())
-    .then(() => console.log('Database seeded!'));
+  await new Promise((resolve, reject) => {
+    execSQL.executeFile(
+      path.join(__dirname, '/schemas/preSchema.sql'),
+      function(err) {
+        if (err) {
+          console.log('err in execSql preSchema: ', err);
+        } else {
+          execSQL.disconnect();
+          resolve(console.log('preSchema done!'));
+        }
+      }
+    );
+  });
 };
 
-insertSampleEvents();
+const postSchemaInitiate = async () => {
+  execSQL.connect({
+    database: 'meetup',
+    user: 'root',
+    password: 'Fila'
+  });
 
-module.exports = events;
+  await new Promise((resolve, reject) => {
+    execSQL.executeFile(
+      path.join(__dirname, '/schemas/postSchema.sql'),
+      function(err) {
+        if (err) {
+          console.log('err in execSql preSchema: ', err);
+        } else {
+          execSQL.disconnect();
+          resolve(console.log('postSchema done!'));
+        }
+      }
+    );
+  });
+};
+
+const seed = async () => {
+  await preSchemaInitiate();
+  await dataGen();
+  await new Promise((resolve, reject) => {
+    db.query(
+      `LOAD DATA LOCAL INFILE  '/Users/roman/Desktop/rsvp/database/csvStorage/eventData.csv' INTO TABLE events FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (eventLimit, setLimit);`,
+      (err, results) => {
+        if (err) {
+          console.log('err:', err);
+        } else {
+          resolve(console.log('no err, results from events query:', results));
+        }
+      }
+    );
+  });
+
+  await new Promise((resolve, reject) => {
+    db.query(
+      `LOAD DATA LOCAL INFILE  '/Users/roman/Desktop/rsvp/database/csvStorage/memberData.csv' INTO TABLE members FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (name, avatar, thumbnail, favorite, waiting, attending, organizing);`,
+      (err, results) => {
+        if (err) {
+          console.log('err:', err);
+        } else {
+          resolve(console.log('no err, results from members query:', results));
+        }
+      }
+    );
+  }).then(result => {
+    postSchemaInitiate();
+  });
+};
+
+seed();
