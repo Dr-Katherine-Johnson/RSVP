@@ -46,7 +46,7 @@ const dataGen = async () => {
 
     //event
     const event = {
-      eventLimit: bitBool,
+      eventLimit: bitBool === 1 ? true : false,
       setLimit: setLimit
     };
     counter++;
@@ -73,7 +73,7 @@ const dataGen = async () => {
         name: name,
         avatar: avatar,
         thumbnail: avatar,
-        favorite: attendingFav,
+        favorite: attendingFav === 1 ? true : false,
         waiting: null,
         attending: i, //i === id/foreign key
         organizing: organizing
@@ -94,7 +94,7 @@ const dataGen = async () => {
           name: name,
           avatar: avatar,
           thumbnail: avatar,
-          favorite: waitingFav,
+          favorite: waitingFav === 1 ? true : false,
           waiting: i, //i === id/foreign key
           attending: null,
           organizing: null
