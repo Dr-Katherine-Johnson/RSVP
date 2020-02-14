@@ -1,0 +1,27 @@
+config:
+  target: 'http://localhost:3001/rsvp'
+  phases:
+    - duration: 5
+      arrivalRate: 100
+  # variables:
+  #   eventIds:
+  #     - ['10199666']
+  #     # - ['999988', '999990', '999989']
+  #     # - ['899991 ', '899992', '899993']
+  #     # - ['799991 ', '799992', '799993']
+  defaults:
+    headers:
+      x-my-service-auth:
+scenarios:
+  - flow:
+      # - loop:
+      - get:
+          # url: '/attendees/{{ $loopElement }}'
+          url: '/attendees/977778'
+      # over:
+      #   eventIds
+      # capture:
+      # capturing response using reg expression
+      #       - regexp: '[^]*'
+      #         as: 'response'
+      #  - log: 'response= {{response}}'
