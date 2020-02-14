@@ -17,7 +17,7 @@ scenarios:
       # - loop:
       - get:
           # url: '/attendees/{{ $loopElement }}'
-          url: '/attendees/977778'
+          url: '/hosts/9777766'
       # over:
       #   eventIds
       # capture:

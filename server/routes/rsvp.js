@@ -57,19 +57,40 @@ router.route('/:eventId').delete((req, res) => {
 //--------------------------------------------------------------------
 
 router.route('/hosts/:eventId').get((req, res) => {
-  Event.findOne({ eventId: req.params.eventId })
-    .then(event => {
-      var eventHosts = [];
-      event.eventOrganizer.forEach(user => {
-        const person = {
-          name: user.name,
-          thumbnail: user.thumbnail
-        };
-        eventHosts.push(person);
-      });
-      res.json(eventHosts);
-    })
-    .catch(err => res.status(404).json(`Error: ${err}`));
+  // Event.findOne({ eventId: req.params.eventId })
+  //   .then(event => {
+  //     var eventHosts = [];
+  //     event.eventOrganizer.forEach(user => {
+  //       const person = {
+  //         name: user.name,
+  //         thumbnail: user.thumbnail
+  //       };
+  //       eventHosts.push(person);
+  //     });
+  //     res.json(eventHosts);
+  //   })
+  //   .catch(err => res.status(404).json(`Error: ${err}`));
+  db.query(
+    `select * from members where organizing=${req.params.eventId}`,
+    // `select * from members where name="Tressie Gleason II";`,
+    (err, results) => {
+      if (err) {
+        console.log('err!', err);
+        res.status(404).json(`Error: ${err}`);
+      } else {
+        console.log('results', results);
+        var attendees = [];
+        _.forEach(results, user => {
+          const person = {
+            name: user.name,
+            avatar: user.avatar
+          };
+          attendees.push(person);
+        });
+        res.json(attendees);
+      }
+    }
+  );
 });
 
 router.route('/attendees/:eventId').get((req, res) => {

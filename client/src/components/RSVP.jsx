@@ -38,8 +38,10 @@ class RSVP extends React.Component {
     console.log('id', id);
     // http://ec2-13-58-208-149.us-east-2.compute.amazonaws.com/rsvp/hosts/${id}
     axios
-      .get(`/rsvp/hosts/${id}`)
+      // .get(`/rsvp/hosts/${id}`)
+      .get(`rsvp/hosts/2`)
       .then(eventHosts => {
+        console.log('eventHost', eventHosts.data);
         this.setState({
           eventHosts: eventHosts.data
         });
