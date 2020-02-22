@@ -4,3 +4,4 @@ bundle.js
 eventData.csv
 memberData.csv
 newrelic.js
+newrelic_agent.log
