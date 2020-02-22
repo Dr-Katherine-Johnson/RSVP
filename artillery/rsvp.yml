@@ -1,0 +1,122 @@
+# config:
+#   target: 'http://localhost:3001/rsvp'
+#   phases:
+#     - duration: 10
+#       arrivalRate: 50
+#   processor: './artillery_functions.js'
+# scenarios:
+#   - flow:
+#       - function: 'generateRandomData'
+#       # - loop:
+#       - get:
+#           url: '/{{ id }}'
+#       - log: 'id {{ id }}'
+config:
+  target: 'http://localhost:3001/rsvp'
+  phases:
+    - duration: 600
+      arrivalRate: 50
+  processor: './artillery_functions.js'
+  # variables:
+  #   eventIds:
+  #     - ['1', '2']
+scenarios:
+  - flow:
+      - function: 'generateRandomData'
+      - loop:
+          - get:
+              url: '/{{ $loopElement }}'
+        over:
+          - '{{ id }}'
+          - '{{ id2 }}'
+# config:
+#   target: 'http://localhost:3001/rsvp'
+#   phases:
+#     - duration: 600
+#       arrivalRate: 100
+#   processor: './artillery_functions.js'
+# scenarios:
+#   - flow:
+#       - function: 'generateRandomData'
+#       # - loop:
+#       - put:
+#           url: '/{{ id }}/{{ eventLimit }}/{{ setLimit }}'
+#       - log: 'id: {{ id }}, eventLimit: {{ eventLimit }}, setLimit: {{ setLimit }}'
+# config:
+#   target: 'http://localhost:3001/rsvp'
+#   phases:
+#     - duration: 10
+#       arrivalRate: 1
+#   variables:
+#     eventIds:
+#       - ['999937', '999896', '969983']
+#       - ['979994', '999941', '996996']
+#       - ['994791', '999692', '999493']
+# scenarios:
+#   - flow:
+#       - loop:
+#           - get:
+#               url: '/{{ $loopElement }}'
+#         over: eventIds
+# config:
+#   target: 'http://localhost:3001/rsvp'
+#   phases:
+#     - duration: 10
+#       arrivalRate: 1
+#   variables:
+#     eventIds:
+#       - ['999988', '999990', '999989']
+#       - ['899991 ', '899992', '899993']
+#       - ['799991 ', '799992', '799993']
+# scenarios:
+#   - flow:
+#       - loop:
+#           - get:
+#               url: '/attendees/{{ $loopElement }}'
+#         over: eventIds
+
+# config:
+#   target: 'http://localhost:3001/rsvp'
+#   phases:
+#     - duration: 10
+#       arrivalRate: 1
+#   variables:
+#     eventIds:
+#       - ['999987', '999996', '999983']
+#       - ['899994', '899991', '899996']
+#       - ['799791', '799292', '799093']
+# scenarios:
+#   - flow:
+#       - loop:
+#           - get:
+#               url: '/hosts/{{ $loopElement }}'
+#         over: eventIds
+
+# config:
+#   target: 'http://localhost:3001/rsvp'
+#   phases:
+#     - duration: 10
+#       arrivalRate: 1
+#   # variables:
+#   #   eventIds:
+#   #     - ['10199666']
+#   #     # - ['999988', '999990', '999989']
+#   #     # - ['899991 ', '899992', '899993']
+#   #     # - ['799991 ', '799992', '799993']
+#   defaults:
+#     headers:
+#       x-my-service-auth:
+# scenarios:
+#   - flow:
+#       # - loop:
+#       - get:
+#           # url: '/attendees/{{ $loopElement }}'
+#           url: '/9777766'
+#       # over:
+#       #   eventIds
+#       # capture:
+#       # capturing response using reg expression
+#       #       - regexp: '[^]*'
+#       #         as: 'response'
+#       #  - log: 'response= {{response}}'
+

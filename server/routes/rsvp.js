@@ -23,38 +23,22 @@ router.route('/:eventId').get((req, res) => {
     }
   );
 });
-//-------------------------------------------------------------------------
 
-router.route('/').post((req, res) => {
-  Event.create(req.body, (err, doc) => {
-    if (err) {
-      throw new Error(err);
-    } else {
-      res.send(doc);
+// put that updates eventLimit and setLimit
+router.route('/:eventId/:eventLimit/:setLimit').put((req, res) => {
+  db.query(
+    `update events set eventLimit=${req.params.eventLimit}, setLimit=${req.params.setLimit} where id=${req.params.eventId}`,
+    (err, results) => {
+      if (err) {
+        console.log('err!', err);
+        res.status(404).json(`Error: ${err}`);
+      } else {
+        console.log('success!', results);
+        res.json(results);
+      }
     }
-  });
+  );
 });
-
-router.route('/:eventId').put((req, res) => {
-  Event.updateOne({ eventId: req.params.eventId }, req.body, (err, doc) => {
-    if (err) {
-      throw new Error(err);
-    } else {
-      res.send(doc);
-    }
-  });
-});
-
-router.route('/:eventId').delete((req, res) => {
-  Event.deleteOne({ eventId: req.params.eventId }, (err, doc) => {
-    if (err) {
-      throw new Error(err);
-    } else {
-      res.send('deleted!');
-    }
-  });
-});
-//--------------------------------------------------------------------
 
 router.route('/hosts/:eventId').get((req, res) => {
   // Event.findOne({ eventId: req.params.eventId })
@@ -132,3 +116,33 @@ router.route('/attendees/:eventId').get((req, res) => {
 });
 
 module.exports = router;
+
+// router.route('/').post((req, res) => {
+//   Event.create(req.body, (err, doc) => {
+//     if (err) {
+//       throw new Error(err);
+//     } else {
+//       res.send(doc);
+//     }
+//   });
+// });
+
+// router.route('/:eventId').put((req, res) => {
+//   Event.updateOne({ eventId: req.params.eventId }, req.body, (err, doc) => {
+//     if (err) {
+//       throw new Error(err);
+//     } else {
+//       res.send(doc);
+//     }
+//   });
+// });
+
+// router.route('/:eventId').delete((req, res) => {
+//   Event.deleteOne({ eventId: req.params.eventId }, (err, doc) => {
+//     if (err) {
+//       throw new Error(err);
+//     } else {
+//       res.send('deleted!');
+//     }
+//   });
+// });

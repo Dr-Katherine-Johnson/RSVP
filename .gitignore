@@ -3,3 +3,4 @@ node_modules
 bundle.js
 eventData.csv
 memberData.csv
+newrelic.js

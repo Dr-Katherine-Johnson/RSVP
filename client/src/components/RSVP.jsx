@@ -34,12 +34,18 @@ class RSVP extends React.Component {
   componentDidMount() {
     // window.location.search is ?event_id=0
     const value = queryString.parse(window.location.search);
-    const id = value.event_id;
+    let id;
+
+    if (value.event_id === undefined) {
+      id = 1;
+    } else {
+      id = value.event_id;
+    }
     console.log('id', id);
     // http://ec2-13-58-208-149.us-east-2.compute.amazonaws.com/rsvp/hosts/${id}
     axios
-      // .get(`/rsvp/hosts/${id}`)
-      .get(`rsvp/hosts/2`)
+      .get(`/rsvp/hosts/${id}`)
+      //.get(`rsvp/hosts/2`)
       .then(eventHosts => {
         console.log('eventHost', eventHosts.data);
         this.setState({
