@@ -9,7 +9,7 @@ const dataGen = async () => {
   let membersArr = [];
 
   const eventCsvWriter = createCsvWriter({
-    path: 'database/csvStorage/eventData.csv',
+    path: 'eventData.csv',
     header: [
       { id: 'eventLimit', title: 'eventLimit' },
       { id: 'setLimit', title: 'setLimit' }
@@ -17,7 +17,7 @@ const dataGen = async () => {
   });
 
   const memberCsvWriter = createCsvWriter({
-    path: 'database/csvStorage/memberData.csv',
+    path: 'memberData.csv',
     header: [
       { id: 'name', title: 'name' },
       { id: 'avatar', title: 'avatar' },
