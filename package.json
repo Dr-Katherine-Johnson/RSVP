@@ -40,6 +40,7 @@
     "exec-sql": "^2.0.2",
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "file-system": "^2.2.2",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "mongoose": "^5.7.13",

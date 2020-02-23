@@ -1,7 +1,8 @@
 const dataGen = require('./dataGen.js');
 const db = require('./index.js');
-var execSQL = require('exec-sql');
-var path = require('path');
+const execSQL = require('exec-sql');
+const path = require('path');
+const fs = require('fs');
 
 const preSchemaInitiate = async () => {
   execSQL.connect({
@@ -65,7 +66,7 @@ const seed = async () => {
   //
   await new Promise((resolve, reject) => {
     db.query(
-      `LOAD DATA LOCAL INFILE  '/Users/roman/Desktop/rsvp/memberData.csv' INTO TABLE members FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (name, avatar, favorite, waiting, attending, organizing);`,
+      `LOAD DATA LOCAL INFILE  '/Users/roman/Desktop/rsvp/memberData.csv' INTO TABLE members FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (name, avatar, thumbnail, favorite, waiting, attending, organizing);`,
       (err, results) => {
         if (err) {
           console.log('err:', err);
@@ -75,7 +76,9 @@ const seed = async () => {
       }
     );
   }).then(result => {
-    postSchemaInitiate();
+    postSchemaInitiate()
+      .then(fs.unlinkSync('./eventData.csv'))
+      .then(fs.unlinkSync('./memberData.csv'));
   });
 };
 

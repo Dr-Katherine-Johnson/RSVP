@@ -36,7 +36,7 @@ const dataGen = async () => {
   }
 
   // one loop creates 1 event & n members (attendees + waitlist)
-  for (let i = 1; i <= 10000000; i++) {
+  for (let i = 1; i <= 1000; i++) {
     const bitBool = faker.random.number({ min: 0, max: 1 }); // sets boolean for eventLimit
     const setLimit =
       bitBool === 1 ? faker.random.number({ min: 3, max: 5 }) : 0;
@@ -72,6 +72,7 @@ const dataGen = async () => {
       const attendee = {
         name: name,
         avatar: avatar,
+        thumbnail: avatar,
         favorite: attendingFav,
         waiting: null,
         attending: i, //i === id/foreign key
@@ -92,6 +93,7 @@ const dataGen = async () => {
         const waiting = {
           name: name,
           avatar: avatar,
+          thumbnail: avatar,
           favorite: waitingFav,
           waiting: i, //i === id/foreign key
           attending: null,
