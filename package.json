@@ -7,10 +7,11 @@
     "test-endpoints": "mocha tests/endpoint.test.js",
     "test": "jest",
     "seed": "node database/seed.js",
-    "react-server": "nodemon node server/index.js",
+    "server:dev": "nodemon node server/index.js",
     "start": "node server/index.js",
-    "react-dev": "webpack -d --watch",
-    "react-prod": "webpack -p --watch"
+    "react:dev": "webpack -d --watch",
+    "react-prod": "webpack -p --watch",
+    "start-docker": "node database/seed.js && node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -49,6 +50,7 @@
     "query-string": "^6.9.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "redis": "^3.0.2",
     "style-loader": "^1.0.1"
   },
   "devDependencies": {

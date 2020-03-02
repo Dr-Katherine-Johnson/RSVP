@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  rsvp:
+    build: ./
+    depends_on:
+      - 'database'
+    ports:
+      - '3001:3001'
+
+  mysql:
+        image: mysql:latest
+    restart: always
+
+    ports:
+      - '3306:3306'
+    volumes:
+      - './.mysql-data/db:/var/lib/mysql'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=local
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+
+  redis-server:
+    restart: always
+    image: redis:4.0
+    command: /bin/bash -c 'redis-server --appendonly yes'
+    sysctls:
+      - net.core.somaxconn=65535
+    ports:
+      - '6369:6379'
+    volumes:
+      - ./redis:/data
+
+volumes:
+  mysql:
+    driver: local
+  redis:
+    driver: local

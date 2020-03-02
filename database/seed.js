@@ -27,6 +27,7 @@ const preSchemaInitiate = async () => {
 };
 
 const postSchemaInitiate = async () => {
+  console.log('post schema initiated');
   execSQL.connect({
     database: 'meetup',
     user: 'root',
@@ -80,6 +81,7 @@ const seed = async () => {
       .then(fs.unlinkSync('./eventData.csv'))
       .then(fs.unlinkSync('./memberData.csv'));
   });
+  return;
 };
 
 seed();

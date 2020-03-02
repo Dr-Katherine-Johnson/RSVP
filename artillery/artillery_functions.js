@@ -2,8 +2,8 @@ const faker = require('faker');
 
 const generateRandomData = (userContext, events, done) => {
   // generate data with Faker:
-  const id = `${faker.random.number({ min: 9000000, max: 10000000 })}`;
-  const id2 = `${faker.random.number({ min: 9000000, max: 10000000 })}`;
+  const id = `${faker.random.number({ min: 9950000, max: 9999999 })}`;
+  const id2 = `${faker.random.number({ min: 9950000, max: 9999999 })}`;
   const eventLimit = `${faker.random.number({ min: 0, max: 1 })}`;
   let setLimit;
 

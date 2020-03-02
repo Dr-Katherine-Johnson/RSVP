@@ -36,7 +36,7 @@ const dataGen = async () => {
   }
 
   // one loop creates 1 event & n members (attendees + waitlist)
-  for (let i = 1; i <= 1000; i++) {
+  for (let i = 1; i <= 10000000; i++) {
     const bitBool = faker.random.number({ min: 0, max: 1 }); // sets boolean for eventLimit
     const setLimit =
       bitBool === 1 ? faker.random.number({ min: 3, max: 5 }) : 0;
@@ -104,7 +104,7 @@ const dataGen = async () => {
       }
     }
 
-    if (counter === 100) {
+    if (counter % 100 === 0) {
       await eventCsvWriter.writeRecords(eventArr).catch(err => {
         console.log('err from eventCsv: ', err);
       }); // returns a promise
@@ -113,7 +113,6 @@ const dataGen = async () => {
       }); // returns a promise
       membersArr = [];
       eventArr = [];
-      counter = 0;
     }
   }
   console.log('dataGen done!');
