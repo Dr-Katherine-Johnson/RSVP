@@ -42,7 +42,7 @@ const dataGen = async () => {
       bitBool === 1 ? faker.random.number({ min: 3, max: 5 }) : 0;
 
     const numberOfAttendees =
-      setLimit !== 0 ? faker.random.number({ min: 3, max: 5 }) : setLimit;
+      bitBool === 0 ? faker.random.number({ min: 3, max: 5 }) : 5;
 
     //event
     const event = {
@@ -54,13 +54,13 @@ const dataGen = async () => {
     eventArr.push(event);
 
     //attendees
-    for (let j = 0; j < numberOfAttendees; j++) {
+    for (let j = 1; j < numberOfAttendees; j++) {
       const name = faker.name.findName();
       const avatar = imageArr[Math.floor(Math.random() * Math.floor(1000))];
       const attendingFav = faker.random.number({ min: 0, max: 1 });
 
       const findOrganizers = () => {
-        if (j === 0 || j === 1) {
+        if (j === 1 || j === 2) {
           return i;
         } else {
           return 0;
