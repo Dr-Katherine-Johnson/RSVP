@@ -18,7 +18,7 @@ app.use(express.static('public'));
 const cache = (req, res, next) => {
   client.get(toString(req.params.eventId), (err, data) => {
     if (err) {
-      throw err;
+      console.log('err: ', err);
     }
     if (data !== null) {
       res.send(setResponse(req.params.eventId, data));
