@@ -36,7 +36,7 @@ const dataGen = async () => {
   }
 
   // one loop creates 1 event & n members (attendees + waitlist)
-  for (let i = 1; i <= 10000000; i++) {
+  for (let i = 1; i <= 5000000; i++) {
     const bitBool = faker.random.number({ min: 0, max: 1 }); // sets boolean for eventLimit
     const setLimit =
       bitBool === 1 ? faker.random.number({ min: 3, max: 5 }) : 0;
