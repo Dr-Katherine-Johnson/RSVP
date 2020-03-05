@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const connection = require('./index.js');
 
+
 const preSchemaInitiate = async () => {
   execSQL.connect({
     database: 'meetup',
@@ -69,6 +70,7 @@ const seed = async () => {
   await new Promise((resolve, reject) => {
     db.query(
       `LOAD DATA LOCAL INFILE  '/Users/roman/Desktop/rsvp/memberData.csv' INTO TABLE members FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (name, avatar, thumbnail, favorite, waiting, attending, organizing);`,
+
       (err, results) => {
         if (err) {
           console.log('err:', err);
@@ -85,6 +87,7 @@ const seed = async () => {
   });
   // do I need to close connection?
   return;
+
 };
 
 seed();

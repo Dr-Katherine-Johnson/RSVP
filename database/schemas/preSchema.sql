@@ -61,6 +61,7 @@ CREATE TABLE `events` (
 
 --  Execute this file from the command line by typing:
 --   mysql -u root -p < database/schemas/preSchema.sql
+
 --   to create the database and the tables.
 
 

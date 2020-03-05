@@ -4,6 +4,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 import faker from 'faker';
 
+
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 
@@ -50,6 +51,7 @@ class RSVP extends React.Component {
       //.get(`rsvp/hosts/2`)
       .then(eventHosts => {
         console.log('eventHost', eventHosts.data);
+
         this.setState({
           eventHosts: eventHosts.data
         });

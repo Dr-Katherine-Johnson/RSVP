@@ -10,6 +10,7 @@ const redis = require('redis');
 const redis_port = 6379;
 const client = redis.createClient(redis_port);
 
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -34,3 +35,4 @@ const server = app.listen(port, () => console.log(`Listening on port ${port}`));
 
 module.exports = { app, server };
 module.exports = client;
+
