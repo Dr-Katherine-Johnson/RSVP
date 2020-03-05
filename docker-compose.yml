@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  redis:
+    image: redis
+    restart: always
+    container_name: cache
+    expose:
+      - 6379
+
+  rsvp:
+    build: ./
+    depends_on:
+      - 'database'
+    links:
+      - redis
+    ports:
+      - '3001:3001'
+    # environment:
+    #   - REDIS_URL=redis://cache
+    #   - NODE_ENV=development
+    #   - PORT=3001
+
+  database:
+    image: mysql:latest
+    restart: always
+    ports:
+      - '3305:3305'
+    # volumes:
+    #   - './.mysql-data/db:/var/lib/mysql'
+    environment:
+      - MYSQL_ROOT_PASSWORD=Fila
+      - MYSQL_DATABASE=meetup
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Fila
+# volumes:
+#   mysql:
+#     driver: local
+#   redis:
+#     driver: local

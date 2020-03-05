@@ -15,7 +15,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle_rsvp.js',
     path: __dirname + '/public'
   }
 };

@@ -20,13 +20,25 @@ import ShareDialog from './ShareDialog.jsx';
 const styles = makeStyles(theme => ({
   dialog: {
     width: 440,
-    height: 600,
+    height: 600
   },
   avatar: {
     justifyContent: 'center',
     padding: '45px 0px 20px 0px'
   }
 }));
+
+export default function AttendDialog({
+  event,
+  time,
+  title,
+  hosts,
+  handleClickAttend,
+  showAttendBtn
+}) {
+  const classes = styles();
+  const [open, setOpen] = React.useState(false);
+  console.log('hosts', hosts);
 
 export default function AttendDialog({ event, time, title, hosts, handleClickAttend, showAttendBtn }) {
   const classes = styles()
@@ -42,22 +54,39 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
   return (
     <div>
       {/* if Attend button IS NOT visible show Share button */}
-      {!showAttendBtn ?
+      {!showAttendBtn ? (
         <ShareDialog />
-        :
+      ) : (
         // otherwise show Attend button
-        <AttendButton onClick={() => { handleClickOpen(); handleClickAttend() }}>
+        <AttendButton
+          onClick={() => {
+            handleClickOpen();
+            handleClickAttend();
+          }}
+        >
           Attend
-        </AttendButton>}
-      <Dialog onClose={handleClose} open={open} classes={{ paper: classes.dialog }}>
+        </AttendButton>
+      )}
+      <Dialog
+        onClose={handleClose}
+        open={open}
+        classes={{ paper: classes.dialog }}
+      >
         <DialogClose onClose={handleClose} />
-        <MuiDialogContent >
+        <MuiDialogContent>
           <AvatarHeaderContainer>
             {hosts.length > 1 ? (
               <>
                 <AvatarGroup className={classes.avatar}>
-                  <Avatar src={hosts[0].thumbnail} style={{ width: 72, height: 72 }} />
-                  <Avatar src={hosts[1].thumbnail} style={{ width: 72, height: 72 }} />
+                  <Avatar
+                    src={hosts[0].avatar}
+                    style={{ width: 72, height: 72 }}
+                  />
+                  <Avatar
+                    src={hosts[1].avatar}
+                    style={{ width: 72, height: 72 }}
+                  />
+
                 </AvatarGroup>
                 <HeaderContainer>
                   <DialogHeader>
@@ -66,27 +95,39 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
                 </HeaderContainer>
               </>
             ) : (
-                hosts.map((host, i) => {
-                  const firstName = host.name.split(' ')[0]
-                  return <div key={i}>
+              hosts.map((host, i) => {
+                console.log('host.name', host.name);
+                const firstName = host.name.split(' ')[0];
+                return (
+                  <div key={i}>
                     <AvatarGroup className={classes.avatar}>
-                      <Avatar src={host.thumbnail} style={{ width: 72, height: 72 }} />
+                      <Avatar
+                        src={host.avatar}
+                        style={{ width: 72, height: 72 }}
+                      />
                     </AvatarGroup>
                     <HeaderContainer>
-                      <DialogHeader>This is {firstName}, your host for the event</DialogHeader>
+                      <DialogHeader>
+                        This is {firstName}, your host for the event
+                      </DialogHeader>
                     </HeaderContainer>
                   </div>
-                })
-              )
-            }
+                );
+              })
+            )}
           </AvatarHeaderContainer>
           <SubheaderContainer>
-            <DialogSubheader>Fanny pack la croix mixtape, gastropub cardigan iceland polaroid hammock typewriter</DialogSubheader>
+            <DialogSubheader>
+              Fanny pack la croix mixtape, gastropub cardigan iceland polaroid
+              hammock typewriter
+            </DialogSubheader>
+
           </SubheaderContainer>
           <DialogCalendarBtn />
           <DialogEventInfo event={event} title={title} time={time} />
         </MuiDialogContent>
       </Dialog>
-    </div >
+    </div>
+
   );
 }

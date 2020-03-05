@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import queryString from 'query-string';
+import faker from 'faker';
+
 
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -34,12 +36,22 @@ class RSVP extends React.Component {
   componentDidMount() {
     // window.location.search is ?event_id=0
     const value = queryString.parse(window.location.search);
-    const id = value.event_id;
-    console.log('id', id);
+    let id;
+
+    if (value.event_id === undefined) {
+      // id = faker.random.number({ min: 9000000, max: 10000000 });
+      id = 1;
+    } else {
+      id = value.event_id;
+    }
+    console.log('value', value);
     // http://ec2-13-58-208-149.us-east-2.compute.amazonaws.com/rsvp/hosts/${id}
     axios
-      .get(`/rsvp/hosts/${id}`)
+      .get(`http://localhost:3001/rsvp/hosts/${id}`)
+      //.get(`rsvp/hosts/2`)
       .then(eventHosts => {
+        console.log('eventHost', eventHosts.data);
+
         this.setState({
           eventHosts: eventHosts.data
         });

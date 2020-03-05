@@ -9,7 +9,7 @@ const dataGen = async () => {
   let membersArr = [];
 
   const eventCsvWriter = createCsvWriter({
-    path: 'database/csvStorage/eventData.csv',
+    path: 'eventData.csv',
     header: [
       { id: 'eventLimit', title: 'eventLimit' },
       { id: 'setLimit', title: 'setLimit' }
@@ -17,7 +17,7 @@ const dataGen = async () => {
   });
 
   const memberCsvWriter = createCsvWriter({
-    path: 'database/csvStorage/memberData.csv',
+    path: 'memberData.csv',
     header: [
       { id: 'name', title: 'name' },
       { id: 'avatar', title: 'avatar' },
@@ -36,13 +36,14 @@ const dataGen = async () => {
   }
 
   // one loop creates 1 event & n members (attendees + waitlist)
-  for (let i = 1; i <= 1000000; i++) {
+  for (let i = 1; i <= 5000000; i++) {
     const bitBool = faker.random.number({ min: 0, max: 1 }); // sets boolean for eventLimit
     const setLimit =
-      bitBool === 1 ? faker.random.number({ min: 5, max: 20 }) : 0;
+      bitBool === 1 ? faker.random.number({ min: 3, max: 5 }) : 0;
 
     const numberOfAttendees =
-      setLimit !== 0 ? faker.random.number({ min: 5, max: 20 }) : setLimit;
+      bitBool === 0 ? faker.random.number({ min: 3, max: 5 }) : 5;
+
 
     //event
     const event = {
@@ -54,13 +55,15 @@ const dataGen = async () => {
     eventArr.push(event);
 
     //attendees
-    for (let j = 0; j < numberOfAttendees; j++) {
+    for (let j = 1; j < numberOfAttendees; j++) {
+
       const name = faker.name.findName();
       const avatar = imageArr[Math.floor(Math.random() * Math.floor(1000))];
       const attendingFav = faker.random.number({ min: 0, max: 1 });
 
       const findOrganizers = () => {
-        if (j === 0 || j === 1) {
+        if (j === 1 || j === 2) {
+
           return i;
         } else {
           return 0;
@@ -84,7 +87,8 @@ const dataGen = async () => {
 
     //waitList
     if (setLimit !== 0) {
-      const waitlistLength = faker.random.number({ min: 5, max: 20 });
+      const waitlistLength = faker.random.number({ min: 3, max: 5 });
+
       for (let k = 0; k < waitlistLength; k++) {
         const name = faker.name.findName();
         const avatar = faker.image.avatar();
@@ -104,7 +108,8 @@ const dataGen = async () => {
       }
     }
 
-    if (counter === 100) {
+    if (counter % 100 === 0) {
+
       await eventCsvWriter.writeRecords(eventArr).catch(err => {
         console.log('err from eventCsv: ', err);
       }); // returns a promise
@@ -113,7 +118,7 @@ const dataGen = async () => {
       }); // returns a promise
       membersArr = [];
       eventArr = [];
-      counter = 0;
+
     }
   }
   console.log('dataGen done!');
