@@ -4,7 +4,6 @@ import axios from 'axios';
 import queryString from 'query-string';
 import faker from 'faker';
 
-
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 
@@ -47,7 +46,9 @@ class RSVP extends React.Component {
     console.log('value', value);
     // http://ec2-13-58-208-149.us-east-2.compute.amazonaws.com/rsvp/hosts/${id}
     axios
-      .get(`http://localhost:3001/rsvp/hosts/${id}`)
+      .get(
+        `http://ec2-13-52-102-247.us-west-1.compute.amazonaws.com:3001/rsvp/hosts/${id}`
+      )
       //.get(`rsvp/hosts/2`)
       .then(eventHosts => {
         console.log('eventHost', eventHosts.data);
