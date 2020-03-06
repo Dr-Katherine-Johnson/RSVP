@@ -38,6 +38,11 @@ export default function AttendDialog({
 }) {
   const classes = styles();
   const [open, setOpen] = React.useState(false);
+  console.log('hosts', hosts);
+
+export default function AttendDialog({ event, time, title, hosts, handleClickAttend, showAttendBtn }) {
+  const classes = styles()
+  const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -74,13 +79,14 @@ export default function AttendDialog({
               <>
                 <AvatarGroup className={classes.avatar}>
                   <Avatar
-                    src={hosts[0].thumbnail}
+                    src={hosts[0].avatar}
                     style={{ width: 72, height: 72 }}
                   />
                   <Avatar
-                    src={hosts[1].thumbnail}
+                    src={hosts[1].avatar}
                     style={{ width: 72, height: 72 }}
                   />
+
                 </AvatarGroup>
                 <HeaderContainer>
                   <DialogHeader>
@@ -90,12 +96,13 @@ export default function AttendDialog({
               </>
             ) : (
               hosts.map((host, i) => {
+                console.log('host.name', host.name);
                 const firstName = host.name.split(' ')[0];
                 return (
                   <div key={i}>
                     <AvatarGroup className={classes.avatar}>
                       <Avatar
-                        src={host.thumbnail}
+                        src={host.avatar}
                         style={{ width: 72, height: 72 }}
                       />
                     </AvatarGroup>
@@ -114,11 +121,13 @@ export default function AttendDialog({
               Fanny pack la croix mixtape, gastropub cardigan iceland polaroid
               hammock typewriter
             </DialogSubheader>
+
           </SubheaderContainer>
           <DialogCalendarBtn />
           <DialogEventInfo event={event} title={title} time={time} />
         </MuiDialogContent>
       </Dialog>
     </div>
+
   );
 }

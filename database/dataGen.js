@@ -2,8 +2,8 @@ const faker = require('faker');
 const fs = require('fs');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-const dataGen = async counter => {
-  //let count = counter;
+const dataGen = async () => {
+  let counter = 0;
   let imageArr = [];
   let eventArr = [];
   let membersArr = [];
@@ -36,7 +36,7 @@ const dataGen = async counter => {
   }
 
   // one loop creates 1 event & n members (attendees + waitlist)
-  for (let i = counter; i <= counter + 500000; i++) {
+  for (let i = 1; i <= 5000000; i++) {
     const bitBool = faker.random.number({ min: 0, max: 1 }); // sets boolean for eventLimit
     const setLimit =
       bitBool === 1 ? faker.random.number({ min: 3, max: 5 }) : 0;
@@ -44,23 +44,26 @@ const dataGen = async counter => {
     const numberOfAttendees =
       bitBool === 0 ? faker.random.number({ min: 3, max: 5 }) : 5;
 
+
     //event
     const event = {
       eventLimit: bitBool,
       setLimit: setLimit
     };
-    //++;
+    counter++;
     console.log(i);
     eventArr.push(event);
 
     //attendees
     for (let j = 1; j < numberOfAttendees; j++) {
+
       const name = faker.name.findName();
       const avatar = imageArr[Math.floor(Math.random() * Math.floor(1000))];
       const attendingFav = faker.random.number({ min: 0, max: 1 });
 
       const findOrganizers = () => {
         if (j === 1 || j === 2) {
+
           return i;
         } else {
           return 0;
@@ -105,7 +108,8 @@ const dataGen = async counter => {
       }
     }
 
-    if (i % 500000 === 0) {
+    if (counter % 100 === 0) {
+
       await eventCsvWriter.writeRecords(eventArr).catch(err => {
         console.log('err from eventCsv: ', err);
       }); // returns a promise
@@ -114,6 +118,7 @@ const dataGen = async counter => {
       }); // returns a promise
       membersArr = [];
       eventArr = [];
+
     }
   }
   console.log('dataGen done!');
