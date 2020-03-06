@@ -36,13 +36,18 @@ const dataGen = async () => {
   }
 
   // one loop creates 1 event & n members (attendees + waitlist)
+<<<<<<< HEAD
   for (let i = 1; i <= 10000000; i++) {
+=======
+  for (let i = 1; i <= 5000000; i++) {
+>>>>>>> b04ac8ed353f9a92b1bc66c24f83342c9101766a
     const bitBool = faker.random.number({ min: 0, max: 1 }); // sets boolean for eventLimit
     const setLimit =
       bitBool === 1 ? faker.random.number({ min: 3, max: 5 }) : 0;
 
     const numberOfAttendees =
       bitBool === 0 ? faker.random.number({ min: 3, max: 5 }) : 5;
+
 
     //event
     const event = {
@@ -55,12 +60,14 @@ const dataGen = async () => {
 
     //attendees
     for (let j = 1; j < numberOfAttendees; j++) {
+
       const name = faker.name.findName();
       const avatar = imageArr[Math.floor(Math.random() * Math.floor(1000))];
       const attendingFav = faker.random.number({ min: 0, max: 1 });
 
       const findOrganizers = () => {
         if (j === 1 || j === 2) {
+
           return i;
         } else {
           return 0;
@@ -106,6 +113,10 @@ const dataGen = async () => {
     }
 
     if (counter % 100 === 0) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> b04ac8ed353f9a92b1bc66c24f83342c9101766a
       await eventCsvWriter.writeRecords(eventArr).catch(err => {
         console.log('err from eventCsv: ', err);
       }); // returns a promise
@@ -114,6 +125,7 @@ const dataGen = async () => {
       }); // returns a promise
       membersArr = [];
       eventArr = [];
+
     }
   }
   console.log('dataGen done!');

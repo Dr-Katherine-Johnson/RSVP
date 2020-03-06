@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const connection = require('./index.js');
 
+
 const preSchemaInitiate = async () => {
   execSQL.connect({
     database: 'meetup',
@@ -84,7 +85,15 @@ const seed = async () => {
       .then(fs.unlinkSync('./eventData.csv'))
       .then(fs.unlinkSync('./memberData.csv'));
   });
+<<<<<<< HEAD
   return;
 };
 
+=======
+  // do I need to close connection?
+  return;
+
+};
+
+>>>>>>> b04ac8ed353f9a92b1bc66c24f83342c9101766a
 seed();
