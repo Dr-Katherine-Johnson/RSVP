@@ -38,11 +38,6 @@ export default function AttendDialog({
 }) {
   const classes = styles();
   const [open, setOpen] = React.useState(false);
-  console.log('hosts', hosts);
-
-export default function AttendDialog({ event, time, title, hosts, handleClickAttend, showAttendBtn }) {
-  const classes = styles()
-  const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -79,14 +74,13 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
               <>
                 <AvatarGroup className={classes.avatar}>
                   <Avatar
-                    src={hosts[0].avatar}
+                    src={hosts[0].thumbnail}
                     style={{ width: 72, height: 72 }}
                   />
                   <Avatar
-                    src={hosts[1].avatar}
+                    src={hosts[1].thumbnail}
                     style={{ width: 72, height: 72 }}
                   />
-
                 </AvatarGroup>
                 <HeaderContainer>
                   <DialogHeader>
@@ -96,13 +90,12 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
               </>
             ) : (
               hosts.map((host, i) => {
-                console.log('host.name', host.name);
                 const firstName = host.name.split(' ')[0];
                 return (
                   <div key={i}>
                     <AvatarGroup className={classes.avatar}>
                       <Avatar
-                        src={host.avatar}
+                        src={host.thumbnail}
                         style={{ width: 72, height: 72 }}
                       />
                     </AvatarGroup>
@@ -121,13 +114,11 @@ export default function AttendDialog({ event, time, title, hosts, handleClickAtt
               Fanny pack la croix mixtape, gastropub cardigan iceland polaroid
               hammock typewriter
             </DialogSubheader>
-
           </SubheaderContainer>
           <DialogCalendarBtn />
           <DialogEventInfo event={event} title={title} time={time} />
         </MuiDialogContent>
       </Dialog>
     </div>
-
   );
 }

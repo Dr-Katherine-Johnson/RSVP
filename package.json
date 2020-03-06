@@ -11,7 +11,7 @@
     "start": "node server/index.js",
     "react:dev": "webpack -d --watch",
     "react-prod": "webpack -p --watch",
-    "start-docker": "node database/seed.js && node server/index.js"
+    "start-docker": "node database/seed.js && node database/postSchemaExecute.js && node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -51,7 +51,6 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "redis": "^3.0.2",
-
     "style-loader": "^1.0.1"
   },
   "devDependencies": {
