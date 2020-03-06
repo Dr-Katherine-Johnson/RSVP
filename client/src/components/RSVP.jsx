@@ -47,7 +47,7 @@ class RSVP extends React.Component {
     // http://ec2-13-58-208-149.us-east-2.compute.amazonaws.com/rsvp/hosts/${id}
     axios
       .get(
-        `http://ec2-13-52-102-247.us-west-1.compute.amazonaws.com:3001/rsvp/hosts/${id}`
+        `http://ec2-13-52-102-247.us-west-1.compute.amazonaws.com/rsvp/hosts/${id}`
       )
       //.get(`rsvp/hosts/2`)
       .then(eventHosts => {
