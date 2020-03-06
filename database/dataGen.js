@@ -2,8 +2,8 @@ const faker = require('faker');
 const fs = require('fs');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-const dataGen = async counter => {
-  //let count = counter;
+const dataGen = async () => {
+  let counter = 0;
   let imageArr = [];
   let eventArr = [];
   let membersArr = [];
@@ -36,7 +36,7 @@ const dataGen = async counter => {
   }
 
   // one loop creates 1 event & n members (attendees + waitlist)
-  for (let i = counter; i <= counter + 500000; i++) {
+  for (let i = 1; i <= 5000000; i++) {
     const bitBool = faker.random.number({ min: 0, max: 1 }); // sets boolean for eventLimit
     const setLimit =
       bitBool === 1 ? faker.random.number({ min: 3, max: 5 }) : 0;
@@ -49,7 +49,7 @@ const dataGen = async counter => {
       eventLimit: bitBool,
       setLimit: setLimit
     };
-    //++;
+    counter++;
     console.log(i);
     eventArr.push(event);
 
@@ -105,7 +105,7 @@ const dataGen = async counter => {
       }
     }
 
-    if (i % 500000 === 0) {
+    if (counter % 100 === 0) {
       await eventCsvWriter.writeRecords(eventArr).catch(err => {
         console.log('err from eventCsv: ', err);
       }); // returns a promise
