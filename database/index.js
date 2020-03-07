@@ -15,8 +15,6 @@
 
 var mysql = require('mysql');
 
-var mysql = require('mysql');
-
 var connection = mysql.createConnection({
   host: 'ip-172-31-6-188.us-west-1.compute.internal',
   port: '3306',
@@ -26,3 +24,5 @@ var connection = mysql.createConnection({
 });
 //
 connection.connect();
+
+module.exports = connection;
