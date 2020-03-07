@@ -15,15 +15,14 @@
 
 var mysql = require('mysql');
 
+var mysql = require('mysql');
+
 var connection = mysql.createConnection({
-  // host: 'ec2-13-52-238-58.us-west-1.compute.amazonaws.com',
-  // port: '3306',
-  host: 'localhost',
+  host: 'ip-172-31-6-188.us-west-1.compute.internal',
+  port: '3306',
   user: 'root',
   password: 'Fila',
   database: 'meetup'
 });
 //
 connection.connect();
-
-module.exports = connection;
