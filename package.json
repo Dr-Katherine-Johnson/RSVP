@@ -43,7 +43,7 @@
     "faker": "^4.1.0",
     "file-system": "^2.2.2",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.7.13",
     "mysql": "^2.18.1",
     "newrelic": "^6.4.0",
