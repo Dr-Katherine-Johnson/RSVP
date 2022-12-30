@@ -58,7 +58,7 @@
     "chai": "^4.2.0",
     "csv-writer": "^1.6.0",
     "jest": "^24.9.0",
-    "mocha": "^7.0.0",
+    "mocha": "^10.2.0",
     "supertest": "^4.0.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
